@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+{%for category in categories %}
+<div class="categories">
+    <button style="padding: 1%;">{{category.category_name}}</button>
+</div>
+{% endfor %}
+
+
+
+
+{% for item in items %}
+
+<div class="item">
+  <!-- <img src="{{ item.item_image.url }}" alt="{{ item.item_name }}"> -->
+  <!-- <h3>{{ item.category }}</h3> -->
+  <h2>{{ item.item_name }}</h2>
+  <p>{{ item.item_price }}</p>
+  {% if request.user.is_superuser%}
+    <button>Make it unavailable</button>
+{%endif%}
+</div>
+{% endfor %}
+
+{% endblock %}

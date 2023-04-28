@@ -1,0 +1,70 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+/* body {
+width: 80%;y
+} */
+body {
+  background-color: #e8beac;
+}
+.sampleimg {
+  width: 700px;
+  height: 350px;
+  padding: 1%;
+}
+h1.app_name {
+  text-align: center;
+  font-family: American Kestrel;
+  font-size: 50px;
+  font-weight: 100;
+}
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+img.logo {
+  width: 9vw;
+}
+h2.head_text {
+  text-align: center;
+
+  font-family: monospace;
+  padding: 2%;
+}
+h1.main-text {
+  text-align: center;
+  font-family: "Kaushan Script", cursive;
+  font-size: xxx-large;
+}
+.chefclass {
+  display: flex;
+  justify-content: center;
+}
+/* @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap'); */
+p {
+  text-align: center;
+}
+@font-face {
+  font-family: "American Kestrel";
+  src: url("../fonts/rubik/AmericanKestrel.woff2") format("woff2"),
+    url("../fonts/rubik/AmericanKestrel.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Rubik Wet Paint";
+  src: url("../fonts/rubik/RubikWetPaint-Regular.woff2") format("woff2"),
+    url("../fonts/rubik/RubikWetPaint-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+.endtext {
+  padding: 2%;
+  font-family: "Kaushan Script";
+  color: brown;
+  font-size: x-large;
+}

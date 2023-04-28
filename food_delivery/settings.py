@@ -11,6 +11,12 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+
+#cloudinary to store the iamges 
+import cloudinary
+from cloudinary.uploader import upload
+from cloudinary.utils import cloudinary_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,7 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps'
+    'apps',
+    'captcha',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +65,7 @@ ROOT_URLCONF = 'food_delivery.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR/'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -69,6 +79,12 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'food_delivery.wsgi.application'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}
 
 
 # Database
@@ -121,9 +137,48 @@ AUTH_USER_MODEL = "apps.User"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,'static')
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Email settings 
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'saitreddy06@gmail.com'
+EMAIL_HOST_PASSWORD = 'rndmsnlspighpxjj'
+EMAIL_USE_TLS = True
+
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+# for the captcha support
+
+RECAPTCHA_PUBLIC_KEY = 'SAITREDDY481309@'
+RECAPTCHA_PRIVATE_KEY = 'MyRecaptchaPrivateKey456'
+
+
+
+
+
+
+##### Cloudinary settings #####
+
+# // Config
+cloudinary.config(
+  cloud_name = "djgayxkbm",
+  api_key = "452854118755814",
+  api_secret = "idwgMoXjfn9j7XX_L_Abv2X8V0c",
+  secure = True
+)
