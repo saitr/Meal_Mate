@@ -1,9 +1,29 @@
+
+
+
 {% extends 'layout.html' %}
 {% block content %}
-    <h1>{{user.username}}</h1>
-    <h1>{{user.phone_number}}</h1>
-    <h1>{{user.email}}</h1>
-    <h1>{{user.address}}</h1>
-    <!-- <h1>{{user.phone_number}}</h1> -->
-    
+
+<form method="POST">
+  {% csrf_token %}
+  <div>
+    <label for="{{ form.username.id_for_label }}">Username:</label>
+    {{ form.username }}
+  </div>
+  <div>
+    <label for="{{ form.email.id_for_label }}">Email:</label>
+    {{ form.email }}
+  </div>
+  <div>
+    <label for="{{ form.phone_number.id_for_label }}">Phone Number:</label>
+    {{ form.phone_number }}
+  </div>
+  <div>
+    <label for="{{ form.address.id_for_label }}">Address:</label>
+    {{ form.address }}
+  </div>
+  <button type="submit">Save</button>
+</form>
+
 {% endblock %}
+

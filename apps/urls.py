@@ -10,7 +10,12 @@ urlpatterns = [
     path('signin/',signin,name='signin'),
     # path('home/',home,name='home'),
     path('user_details/',user_details,name='user_details'),
-    ###### HOme pageurl 
+
+    ###### Home pageurls
+    
     path('home/',item_list,name='home'),
+    path('item_not_available/',make_item_unavailable,name='make_item_unavailable'),
+    path('item_available/',make_item_available,name='make_item_available'),
+    path('filter/<int:category_id>/', filter_items, name='filter_items'),
     
 ]

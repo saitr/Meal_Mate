@@ -4,7 +4,7 @@ from django.core.mail import send_mail,EmailMultiAlternatives
 from django.shortcuts import render, redirect
 from django.utils.crypto import get_random_string
 # form imports 
-from apps.forms import SignUpForm,VerifyOTPForm,SignInForm
+from apps.forms import SignUpForm,VerifyOTPForm,SignInForm,ChangeUserDetails
 from django.http import HttpResponse
 from apps.models import User
 from django.template.loader import render_to_string
@@ -107,6 +107,9 @@ def verify(request, email):
                 # Authenticate and log in the user
                 
                 login(request,user)
+                user.save_token()
+
+                
                 if login:
                     print('successfully logged in')
                 else:
@@ -131,6 +134,8 @@ def verify(request, email):
 def logout_user(request):
     if request.user.is_authenticated:
         user = request.user
+        user.token = None
+        print('thisi sit',user.token)
         user.is_logged_in = False
         user.save()
         logout(request)
@@ -142,46 +147,133 @@ def logout_user(request):
 ########################################### signin view###################################
 
 
+# def signin(request):
+#     if request.method == 'POST':
+#         form = SignInForm(request.POST)
+#         if form.is_valid():
+#             username= form.cleaned_data['username']
+#             print('login username',username)
+#             password= form.cleaned_data['password']
+#             print('login password',password)
+            
+#             user = User.objects.get(username=username,password=password)
+#             if user:
+#                 login_user = user
+
+#                 login(request,login_user)
+#                 try:
+#                     token = Token.objects.get(user=user)
+#                 except Token.DoesNotExist:
+#                     token = Token(user=user)
+                
+#                 token.key = secrets.token_urlsafe(32)
+#                 token.created = timezone.now()
+#                 token.expires = token.created + timedelta(days=7)
+#                 token.save()
+
+#                 if login:
+#                     print('login successful')
+#                 else:
+#                     print('login failed')
+#                 user.is_logged_in = True
+#                 user.save()
+#                 return redirect('home')
+#             else:
+#                 form.add_error('no correct username or password')
+   
+#     else:
+#         form = SignInForm()
+#     return render(request, 'signin.html', {'form': form})
+
+
+
 def signin(request):
+    
     if request.method == 'POST':
         form = SignInForm(request.POST)
         if form.is_valid():
-            username= form.cleaned_data['username']
-            print('login username',username)
-            password= form.cleaned_data['password']
-            print('login password',password)
-            
-            user = User.objects.get(username=username,password=password)
-            if user:
-                login_user = user
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            try:
+                user = User.objects.get(username=username, password=password)
+            except User.DoesNotExist:
+                form.add_error(None, 'Incorrect username or password')
+                return render(request, 'signin.html', {'form': form})
 
-                login(request,login_user)
-                if login:
-                    print('login successful')
-                else:
-                    print('login failed')
-                user.is_logged_in = True
-                user.save()
-                return redirect('home')
-            else:
-                form.add_error('no correct username or password')
-   
+            login(request, user)
+            
+            # # Delete any existing tokens for the user
+            user.save_token()
+
+            user.is_logged_in = True
+            user.save()
+
+            return redirect('home')
+
     else:
         form = SignInForm()
+
     return render(request, 'signin.html', {'form': form})
 
 
-def home(request):
-    return HttpResponse('<h1>Home</h1>')
 
 ############################ user details ##################################
+
+# @login_required
+# def user_details(request):
+#     user = request.user
+
+#     if request.method == 'POST':
+#         form = ChangeUserDetails(request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data['username']
+#             email = form.cleaned_data['email']
+#             phone_number = form.cleaned_data['phone_number']
+#             address = form.cleaned_data['address']
+
+#             request.user.username = username
+#             request.user.email = email
+#             request.user.phone_number = phone_number
+#             request.user.address = address
+
+#             user.save()
+#             return redirect('home')
+#     else: 
+#         form = ChangeUserDetails()
+#     # user = request.user
+#     # context = {'user': user}
+#     return render(request, 'user_details.html',{'form':form})
+
 
 @login_required
 def user_details(request):
     user = request.user
-    context = {'user': user}
-    return render(request, 'user_details.html', context)
 
+    if request.method == 'POST':
+        form = ChangeUserDetails(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            email = form.cleaned_data['email']
+            phone_number = form.cleaned_data['phone_number']
+            address = form.cleaned_data['address']
+
+            request.user.username = username
+            request.user.email = email
+            request.user.phone_number = phone_number
+            request.user.address = address
+
+            user.save()
+            return redirect('home')
+    else:
+        initial_data = {
+            'username': user.username,
+            'email': user.email,
+            'phone_number': user.phone_number,
+            'address': user.address,
+        }
+        form = ChangeUserDetails(initial=initial_data)
+    
+    return render(request, 'user_details.html', {'form': form})
 
 
 

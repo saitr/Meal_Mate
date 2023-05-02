@@ -21,11 +21,40 @@ def item_list(request):
         #     if item.is_available:
         #         available_items.append(item)
 
-        context = {'items': available_items,'categories': categories}
+        context = {'items': items,'categories': categories}
         return render(request, 'home.html', context)
     else: 
         return redirect('signin')
     
+
+
+
+######################## To make the items available ################################
+
+
+def make_item_available(request):
+    item_id = request.GET.get('item_id')
+    item = Items.objects.get(id=item_id)
+    item.is_available = True
+    item.save()
+    return redirect('home')
+
+def make_item_unavailable(request):
+    item_id = request.GET.get('item_id')
+    item = Items.objects.get(id=item_id)
+    item.is_available = False
+    item.save()
+    return redirect('home')
+
+
+################### Filterning of the items with the categories ######################
+
+def filter_items(request, category_id):
+    category = Categories.objects.get(pk=category_id)
+    items = Items.objects.filter(category=category, is_available=True)
+    categories = Categories.objects.all()
+    context = {'items': items, 'categories': categories}
+    return render(request, 'home.html', context)
 
 
 

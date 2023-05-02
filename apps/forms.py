@@ -40,5 +40,13 @@ class SignInForm(forms.Form):
 
 ################## changing the email form #####################
 
-class ChangeEmailForm(forms.Form):
-    pass
+class ChangeUserDetails(forms.Form):
+    username = forms.CharField(max_length=100,label='Username:')
+    email = forms.EmailField(label='Email:')
+    phone_number = forms.IntegerField(label="Phone Number:")
+    address = forms.CharField(max_length=100,label = 'Address:')
+
+
+
+
+

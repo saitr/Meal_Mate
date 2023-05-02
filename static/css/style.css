@@ -68,3 +68,7 @@ p {
   color: brown;
   font-size: x-large;
 }
+
+.item {
+  width: 30%;
+}

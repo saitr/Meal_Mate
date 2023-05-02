@@ -1,26 +1,27 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-{%for category in categories %}
 <div class="categories">
-    <button style="padding: 1%;">{{category.category_name}}</button>
+  <a href="{% url 'home' %}"><button>All</button></a>
+  {% for category in categories %}
+    <a href="{% url 'filter_items' category.id %}" style="padding: 1%;"><button>{{ category.category_name }}</button></a>
+  {% endfor %}
 </div>
-{% endfor %}
-
-
-
 
 {% for item in items %}
-
-<div class="item">
-  <!-- <img src="{{ item.item_image.url }}" alt="{{ item.item_name }}"> -->
-  <!-- <h3>{{ item.category }}</h3> -->
-  <h2>{{ item.item_name }}</h2>
-  <p>{{ item.item_price }}</p>
-  {% if request.user.is_superuser%}
-    <button>Make it unavailable</button>
-{%endif%}
-</div>
+  <div class="item">
+    <img src="{{ item.item_image.url }}" style="width:250px;" alt="{{ item.item_name }}">
+    <h2>{{ item.item_name }}</h2>
+    <p>{{ item.item_price }}</p>
+    {% if request.user.is_superuser %}
+      {% if item.is_available %}
+        <a href="{% url 'make_item_unavailable' %}?item_id={{ item.id }}"><button>Make it unavailable</button></a>
+      {% else %}
+        <a href="{% url 'make_item_available' %}?item_id={{ item.id }}"><button>Make it available</button></a>
+      {% endif %}
+    {% endif %}
+  </div>
 {% endfor %}
+
 
 {% endblock %}

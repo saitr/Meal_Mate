@@ -22,7 +22,7 @@ class Common(models.Model):
 
 
 class User(AbstractUser):
-    username = models.CharField(max_length=255,null=True,blank=True)
+    username = models.CharField(max_length=255,null=True,blank=True,unique=True)
     password = models.CharField(max_length=30,default=None,null=True,blank=True)
     phone_number = models.IntegerField(null=True,blank=True)
     email = models.EmailField(unique=True)
@@ -31,14 +31,15 @@ class User(AbstractUser):
     is_verified = models.BooleanField(default=False)
     is_logged_in = models.BooleanField(default=False)
     otp = models.CharField(max_length=6, blank=True, null=True)
+    phone_verified = models.BooleanField(default=False)
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
 
-    REQUIRED_FIELDS =[]
+    REQUIRED_FIELDS =['username','phone_number']
 
     # function to create a token 
-    def save(self, *args, **kwargs):
+    def save_token(self, *args, **kwargs):
         if not self.token:
             # generate new token if none exists
             self.token = secrets.token_urlsafe(32)
@@ -51,7 +52,12 @@ class User(AbstractUser):
         self.token_created = None
         self.token_expires = None
         self.save()
-    
+
+    def get_token_expiry(self):
+        if self.token_expiry:
+            return timezone.localtime(self.token_expiry)
+        else:
+            return None
 # Category Model
 
 class Categories(Common):
