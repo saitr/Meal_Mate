@@ -21,8 +21,9 @@ def add_to_cart(request, item_id):
         cart_item.quantity += 1
         cart_item.save()
 
-    
-    return redirect('home')
+    # Redirect back to the previous page
+    return redirect(request.META.get('HTTP_REFERER', 'home'))
+
 
 
 

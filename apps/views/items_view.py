@@ -26,19 +26,26 @@ from apps.models import *
 #     else: 
 #         return redirect('signin')
 
-def item_list(request):
+def item_list(request, category_id=None):
     user = request.user
-    if user.is_authenticated and user.is_logged_in or user.is_superuser:
-        items = Items.objects.all()
+    if user.is_authenticated and (user.is_logged_in or user.is_superuser):
         categories = Categories.objects.all()
-        cart_items = Cart.objects.filter(user=request.user)
-        
-        cart_dict = {item.item_id: item for item in cart_items}  # build dictionary
+        selected_category = None
 
-        context = {'items': items, 'categories': categories, 'cart_dict': cart_dict}
+        if category_id:
+            selected_category = Categories.objects.get(pk=category_id)
+            items = Items.objects.filter(category=selected_category, is_available=True)
+        else:
+            items = Items.objects.filter(is_available=True)
+
+        cart_items = Cart.objects.filter(user=request.user)
+        cart_dict = {item.item_id: item for item in cart_items}
+
+        context = {'items': items, 'categories': categories, 'cart_dict': cart_dict, 'selected_category': selected_category}
         return render(request, 'home.html', context)
     else: 
         return redirect('signin')
+
 
     
 
@@ -64,12 +71,34 @@ def make_item_unavailable(request):
 
 ################### Filterning of the items with the categories ######################
 
+# def filter_items(request, category_id):
+#     category = Categories.objects.get(pk=category_id)
+#     items = Items.objects.filter(category=category, is_available=True)
+#     categories = Categories.objects.all()
+#     context = {'items': items, 'categories': categories}
+
+#     return render(request, 'home.html', context)
+
 def filter_items(request, category_id):
     category = Categories.objects.get(pk=category_id)
     items = Items.objects.filter(category=category, is_available=True)
     categories = Categories.objects.all()
-    context = {'items': items, 'categories': categories}
+    
+    # Get the cart items for the current user
+    if request.user.is_authenticated:
+        cart_items = Cart.objects.filter(user=request.user)
+        cart_dict = {}
+        for cart_item in cart_items:
+            cart_dict[cart_item.item.id] = cart_item.quantity
+    else:
+        cart_dict = {}
+        
+    context = {'items': items, 'categories': categories, 'cart_dict': cart_dict}
+
     return render(request, 'home.html', context)
+
+
+
 
 
 
