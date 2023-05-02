@@ -6,25 +6,40 @@ from django.contrib.auth.decorators import login_required
 from apps.models import *
 
 
+# def item_list(request):
+#     user = request.user
+#     if user.is_authenticated and user.is_logged_in or user.is_superuser:
+#         items = Items.objects.all()
+#         categories = Categories.objects.all()
+#         cart_items = Cart.objects.filter(user=request.user)
+#         # available_items = [item for item in items if item.is_available]
+
+#         # above line with normal for loop 
+
+#         # available_items = []
+#         # for item in items:
+#         #     if item.is_available:
+#         #         available_items.append(item)
+
+#         context = {'items': items,'categories': categories,'cart_items': cart_items}
+#         return render(request, 'home.html', context)
+#     else: 
+#         return redirect('signin')
+
 def item_list(request):
     user = request.user
     if user.is_authenticated and user.is_logged_in or user.is_superuser:
         items = Items.objects.all()
         categories = Categories.objects.all()
+        cart_items = Cart.objects.filter(user=request.user)
+        
+        cart_dict = {item.item_id: item for item in cart_items}  # build dictionary
 
-        available_items = [item for item in items if item.is_available]
-
-        # above line with normal for loop 
-
-        # available_items = []
-        # for item in items:
-        #     if item.is_available:
-        #         available_items.append(item)
-
-        context = {'items': items,'categories': categories}
+        context = {'items': items, 'categories': categories, 'cart_dict': cart_dict}
         return render(request, 'home.html', context)
     else: 
         return redirect('signin')
+
     
 
 
@@ -55,6 +70,11 @@ def filter_items(request, category_id):
     categories = Categories.objects.all()
     context = {'items': items, 'categories': categories}
     return render(request, 'home.html', context)
+
+
+
+
+
 
 
 

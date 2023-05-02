@@ -4,7 +4,23 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-<form method="POST">
+<!-- {% for user in users%}
+<img src="{{user.display_picture.url}}" alt="">
+
+
+{% endfor %} -->
+
+{% if request.user.display_picture %}
+
+<img src="{{ request.user.display_picture.url }}" alt="{{ request.user.username }}" width="200">
+
+{% else %}
+
+<img src="../static/img/user.png" alt="User Image" width="200px">
+
+{% endif %}
+
+<form method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   <div>
     <label for="{{ form.username.id_for_label }}">Username:</label>
@@ -21,7 +37,12 @@
   <div>
     <label for="{{ form.address.id_for_label }}">Address:</label>
     {{ form.address }}
+    
   </div>
+
+  <label for="{{ form.display_picture.id_for_label }}" {% if form.display_picture.required %}required{% endif %}>Display Picture:</label>
+  {{ form.display_picture }}
+  
   <button type="submit">Save</button>
 </form>
 

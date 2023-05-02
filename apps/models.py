@@ -32,6 +32,7 @@ class User(AbstractUser):
     is_logged_in = models.BooleanField(default=False)
     otp = models.CharField(max_length=6, blank=True, null=True)
     phone_verified = models.BooleanField(default=False)
+    display_picture = CloudinaryField('Display Picture',null=True, blank=True)
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
@@ -89,10 +90,12 @@ class Cart(models.Model):
     # cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     user = models.ForeignKey(User, blank=False, null=False,on_delete=models.CASCADE)
     item = models.ForeignKey(Items, on_delete=models.CASCADE)
-    quantity = models.IntegerField(null=False, blank=False, default=1)
+    quantity = models.IntegerField(null=True, blank=False, default=1)
     
     class Meta:
         db_table = 'Cart'
+    
+    
 
 # Order Model
 

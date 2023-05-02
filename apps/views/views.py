@@ -248,20 +248,25 @@ def signin(request):
 @login_required
 def user_details(request):
     user = request.user
-
+    users = User.objects.all()
     if request.method == 'POST':
-        form = ChangeUserDetails(request.POST)
+        form = ChangeUserDetails(request.POST,request.FILES)
         if form.is_valid():
             username = form.cleaned_data['username']
             email = form.cleaned_data['email']
             phone_number = form.cleaned_data['phone_number']
             address = form.cleaned_data['address']
+            display_picture = form.cleaned_data['display_picture']
 
             request.user.username = username
             request.user.email = email
             request.user.phone_number = phone_number
             request.user.address = address
-
+            
+            # Save display picture if provided
+            if display_picture:
+                user.display_picture = display_picture
+                
             user.save()
             return redirect('home')
     else:
@@ -273,7 +278,7 @@ def user_details(request):
         }
         form = ChangeUserDetails(initial=initial_data)
     
-    return render(request, 'user_details.html', {'form': form})
+    return render(request, 'user_details.html', {'form': form,'users': users})
 
 
 

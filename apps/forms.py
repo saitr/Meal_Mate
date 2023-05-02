@@ -38,15 +38,14 @@ class SignInForm(forms.Form):
         fields = ('username', 'password')
 
 
-################## changing the email form #####################
+################## changing the user_details form #####################
 
 class ChangeUserDetails(forms.Form):
     username = forms.CharField(max_length=100,label='Username:')
     email = forms.EmailField(label='Email:')
     phone_number = forms.IntegerField(label="Phone Number:")
     address = forms.CharField(max_length=100,label = 'Address:')
-
-
+    display_picture = forms.FileField(label='Change Display Picture',required=False)
 
 
 
