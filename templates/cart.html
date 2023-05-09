@@ -1,29 +1,64 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-<div class="cart_list">
-    {% for cart in cart_items %} <br>
-       <img src="{{cart.item.item_image.url}}" width="200" alt=""> <br>
-       User: {{cart.user.username}} <br>
-       Item Name: {{cart.item.item_name}} <br>
-       Item Price: {{cart.item.item_price}} <br>
-       
-       <div class="cart_quantity">
-        <form method="POST" action="{% url 'update_cart_item' cart.id %}">
-            {% csrf_token %}
-            <input type="hidden" name="action" value="increase">
-            <button type="submit">+</button>
-        </form>
-        {{cart.quantity}}
-        <form method="POST" action="{% url 'update_cart_item' cart.id %}">
-            {% csrf_token %}
-            <input type="hidden" name="action" value="decrease">
-            <button type="submit">-</button>
-        </form>
-       </div>  
-    {% endfor %}
-    <a href="{% url 'home' %}"><button>Home</button></a>
+{% include 'navbar.html' %}
 
+<h1 class="cartpage-headin">Welcome To Your Cart!!!</h1>
+
+
+<div class="d-flex flex-column align-items-center pt-5 pb-5">
+    {% for cart in cart_items %}
+    <div class="card mb-3" style="width: 70%;">
+        <div class="row g-0 p-0">
+            <div class="col-md-4" style="width:25%;">
+                <img src="{{cart.item.item_image.url}}" class="img-fluid rounded-start" alt="..." style="width: 100%;height: 30vh;">
+            </div>
+            <div class="col-md-8 d-flex align-items-center">
+                <div class="card-body">
+                    <b>
+                        <h5 class="card-title fw-bolder fs-2"> {{cart.item.item_name}}</h5>
+                    </b>
+                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse mollitia
+                        reiciendis dolorum animi sequi vero quasi? Alias commodi nobis saepe hic facilis
+                        perspiciatis deserunt
+                        totam laboriosam. Temporibus asperiores blanditiis cupiditate! Lorem ipsum dolor sit amet
+                        consectetur
+                        adipisicing elit. Numquam provident dolorem vel adipisci suscipit delectus accusamus!
+                        Tenetur quaerat
+                        optio, quia consequuntur consectetur laboriosam harum nesciunt modi blanditiis aut! Minima,
+                        earum!</p>
+                        <h5 class="card-title fs-3">{{cart.item.item_price}}</h5>
+
+                        
+                    <div class="cart-quantity">
+
+                        <form  method="POST" action="{% url 'update_cart_item' cart.id %}" style="width:0;">
+                            {% csrf_token %}
+                            <input type="hidden" name="action" value="decrease">
+                            <button class="quantitybutton">-</button>
+                        </form>
+
+                        
+                        <h4  class="cart-present-quantity">{{cart.quantity}}</h4>
+                        <form method="POST" action="{% url 'update_cart_item' cart.id %}" style="width: 0;">
+                            {% csrf_token %}
+                            <input type="hidden" name="action" value="increase">
+                            <button class="quantitybutton">+</button>
+                        </form>
+                        
+                    </div>
+                    <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
 </div>
+
+<div class="footer-cart">
+    <h1 class="subtotal">Your Total Ammount: {{subtotal}}</h1>
+    <a href="{% url 'order' %}"><button class="checkoutbtn">CHECKOUT</button></a>
+</div>
+
 
 {% endblock %}

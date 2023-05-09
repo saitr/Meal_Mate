@@ -34,9 +34,9 @@ def item_list(request, category_id=None):
 
         if category_id:
             selected_category = Categories.objects.get(pk=category_id)
-            items = Items.objects.filter(category=selected_category, is_available=True)
+            items = Items.objects.filter(category=selected_category)
         else:
-            items = Items.objects.filter(is_available=True)
+            items = Items.objects.filter()
 
         cart_items = Cart.objects.filter(user=request.user)
         cart_dict = {item.item_id: item for item in cart_items}
@@ -96,14 +96,6 @@ def filter_items(request, category_id):
     context = {'items': items, 'categories': categories, 'cart_dict': cart_dict}
 
     return render(request, 'home.html', context)
-
-
-
-
-
-
-
-
 
 
 

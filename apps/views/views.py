@@ -77,6 +77,9 @@ def signup(request):
     return render(request, 'signup.html', {'form': form})
 
 
+
+
+
 ############################## to verify the email while signing up##################################
 
 def verify(request, email):
@@ -267,7 +270,7 @@ def user_details(request):
             if display_picture:
                 user.display_picture = display_picture
                 
-            user.save()
+            request.user.save()
             return redirect('home')
     else:
         initial_data = {

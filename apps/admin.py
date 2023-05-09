@@ -9,3 +9,10 @@ admin.site.register(Items)
 admin.site.register(Cart)
 # admin.site.register(CartItem)
 admin.site.register(Order)
+
+
+
+
+
+
+

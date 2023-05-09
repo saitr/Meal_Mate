@@ -1,46 +1,499 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-<div class="categories">
-  <a href="{% url 'home' %}"><button>All</button></a>
-  {% for category in categories %}
-    <a href="{% url 'filter_items' category.id %}" style="padding: 1%;"><button>{{ category.category_name }}</button></a>
-  {% endfor %}
+<!-- navbar  -->
+{% if '/filter/' not in request.path %}
+  {% include 'navbar.html' %}
+{% endif %}
+<!-- navbar end  -->
+
+{% if '/filter/' not in request.path %}
+
+<div class="background">
+  <img src="../static/img/Banner1.webp" alt="" class="banner">
+  <div class="inner">
+    <h3 class="first_text">Mega Discounts on</h3> <br>
+    <h1 class="second_text">Tasty Bites</h1> <br>
+    <h1 class="third_text">Healthy Foods</h1>
+    <h2 class="discount_text">10-50% OFF</h2>
+    <button class="view-dishes">VIEW DISHES</button>
+  </div>
+</div>
+
+<div class="curl1">
+  <img src="../static/img/curls.webp" alt="" class="curl_img">
+</div>
+{% endif %}
+
+
+
+<!-- International cusines  -->
+{% if '/filter/' not in request.path %}
+
+
+<h1 class="international_text">International Cuisines</h1>
+<h2 class="incredible">Incredibly Tasty International Dish </h2>
+
+
+
+
+<div class="international_cusine">
+  <div class="side1">
+
+    <div class="african-cusine">
+      <h2 class="country">African Cuisines</h2>
+      <p>Alienum phaedrum torquatos nec eu, vis detraxit periculis ex, nihil expetelis in mei. Meianpe icula
+        euripidis,partem.</p>
+    </div>
+    <div class="african-cusine">
+      <h2 class="country">American Cuisines</h2>
+      <p>Alienum phaedrum torquatos nec eu, vis detraxit periculis ex, nihil expetelis in mei. Meianpe icula
+        euripidis,partem.</p>
+    </div>
+    <div class="african-cusine">
+      <h2 class="country">Asian Cuisines</h2>
+      <p>Alienum phaedrum torquatos nec eu, vis detraxit periculis ex, nihil expetelis in mei. Meianpe icula
+        euripidis,partem.</p>
+    </div>
+
+  </div>
+
+  <div class="middle">
+    <img src="../static/img/middledish.webp" alt="">
+  </div>
+  <div class="side2">
+    <div class="african-cusine">
+      <h2 class="country">European Cuisines</h2>
+      <p>Alienum phaedrum torquatos nec eu, vis detraxit periculis ex, nihil expetelis in mei. Meianpe icula
+        euripidis,partem.</p>
+    </div>
+    <div class="african-cusine">
+      <h2 class="country">Oceanic Cuisines</h2>
+      <p>Alienum phaedrum torquatos nec eu, vis detraxit periculis ex, nihil expetelis in mei. Meianpe icula
+        euripidis,partem.</p>
+    </div>
+    <div class="african-cusine">
+      <h2 class="country">Indian Cuisines</h2>
+      <p>Alienum phaedrum torquatos nec eu, vis detraxit periculis ex, nihil expetelis in mei. Meianpe icula
+        euripidis,partem.</p>
+    </div>
+  </div>
+
+
+</div>
+
+<!-- end of international cusines  -->
+
+
+<!-- samosa div   -->
+
+<div class="samosadiv">
+  <!-- <img src="img/curls.webp" alt="" class="curl2"> -->
+  <img src="../static/img/curls.webp" alt="" class="curl2">
+
+  <div class="samosatext">
+    <h1 class="upgra">Upgrade To The Latest Taste!</h1>
+    <p class="samosapara">
+      Est sit amet facilisis magna etiam tempor. Dolor sed viverra ipsum nunc aliquet bibendum enim. Magnis
+      dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Commodo ullamcorper a lacus
+      vestibulum sed arcu non odio euismod. Elementum nisi quis eleifend quam adipiscing vitae proin sagittis
+      nisl. Auctor augue mauris gravida.
+
+      Tristique sollicitudin nibh sit amet commodo nulla facilisi nullam. Sodales ut eu sem integer vitae.
+      Nibh tortor id aliquet lectus proin nibh. Sed velit dignissim sodales ut.
+    </p>
+  </div>
+  <img src="../static/img/curls.webp" alt="" class="curl3">
+</div>
+
+
+<!-- end of samosa div  -->
+
+
+<!-- special quailites  -->
+
+<div class="special-qualites">
+  <!-- <img src="img/image_middle-removebg-preview.png" alt="" class="chicken"> -->
+  <img src="../static/img/image_middle-removebg-preview.png" alt="" class="chicken">
+
+  <div class="qualites">
+    <h1 class="spe">What makes Our Menus Special?</h1>
+    <h2 class="quality1">Pure Ingredients</h2>
+    <p class="charaterstics">
+      Vestibulum morbi blandit cursus risus at ultrices mi. Facilisis gravida neque convallis a.
+    </p>
+
+
+    <h2 class="quality1">Sustainability</h2>
+    <p class="charaterstics">
+      Laculis eu non diam phasellus. Dictum non consectetur a erat nam at. Quam adipiscing vitae proin
+      sagittis. </p>
+
+
+    <h2 class="quality1">Environmentalism</h2>
+    <p class="charaterstics">
+      Bibendum est ultricies integer quis auctor elit sed. Accumsan tortor posuere ac ut consequat semper.
+    </p>
+
+
+    <h2 class="quality1">Formula Transparency</h2>
+    <p class="charaterstics">
+      Facilisi nullam vehicula ipsum a. Ornare massa eget egestas purus viverra accumsan in nisl nisi. </p>
+  </div>
+</div>
+
+<!-- end of specail qualites div  -->
+
+<!-- soup div  -->
+
+
+<div class="soupdiv">
+
+  <img src="../static/img/curls.webp" alt="" class="curl2-soup">
+
+  <div class="souptext">
+    <h3 class="soup-text1">Enjoy Great Recipe</h3>
+    <h1 class="soup-text2">Simple And Delicious Food</h1>
+    <h2 class="discount">Flat 20% Discount</h2>
+    <button class="shopnow">SHOP NOW</button>
+  </div>
+  <img src="../static/img/curls.webp" alt="" class="curl3-soup">
+
+</div>
+{% endif %}
+<!-- end of soup div  -->
+
+
+<!-- Products div where we have all the products  -->
+
+<section class="products">
+{% if '/filter/' in request.path %}
+  <h1 class="heading">The Filtered Products Are....</h1>
+
+  {% else %}
+  <h1 class="heading">Our Products</h1>
+  {% endif %}
+
+  <p class="itempara">Quam pellentesque nec nam aliquam sem et tortor consequat. Ut placerat orci nulla
+    pellentesque dignissim enim sit amet venenatis.</p>
+
+    {% if '/filter/' in request.path %}
+    <a href="{% url 'home' %}" style="padding: 1%;">
+      <i class="bi bi-house-fill"></i>
+  </a>
+  {% endif %}
+
+  <div class="itemsdiv">
+    {% for item in items %}
+    <div class="individual-item">
+      <img src="{{ item.item_image.url }}" alt="" class="item-image">
+      <div class="item-details">
+        <span>
+          <h2 class="item-name">{{ item.item_name }}</h2>
+          {% if request.user.is_superuser %}
+          {% if item.is_available %}
+          <a href="{% url 'make_item_unavailable' %}?item_id={{ item.id }}"><button class="btn btn-primary">Unavailable</button></a>
+          {% else %}
+          <a href="{% url 'make_item_available' %}?item_id={{ item.id }}"><button class="btn btn-primary">Available</button></a>
+          {% endif %}
+          {% endif %}
+          {% if item.is_available %}
+          {% if item.id in cart_dict %}
+          <a href="{% url 'cart_list' %}"><i class="bi bi-bag-check-fill"></i></a>
+          {% else %}
+          <a href="{% url 'cart' item.id %}"> 
+          <i class="bi bi-bag-heart-fill"></i>
+
+          </a>
+          {% endif %}
+          {% else %}
+          <p>This item is currently unavailable</p>
+          {% endif %}
+        </span>
+        <hr class="line">
+        <h2 class="item-price">&#8377;{{ item.item_price }}</h2>
+      </div>
+    </div>
+    {% endfor %}
+</section>
+
+
+
+
+<!-- End of the products div  -->
+
+{% if '/filter/' not in request.path %}
+
+
+ <!-- poplular items  -->
+ <h1 class="ourgal-text">Our Gallery</h1>
+ <div class="ourgallery">
+     <div class="popular-items">
+         <img src="../static/img/roll-original.webp" alt="" class="popular-img">
+
+     </div>
+     <div class="popular-items">
+         <img src="../static/img/some-bread-popular.webp" alt="" class="popular-img">
+     </div>
+     <div class="popular-items">
+         <img src="../static/img/carbonara.webp" alt="" class="popular-img">
+
+     </div>
+     <div class="popular-items">
+         <img src="../static/img/sphagetti.webp" alt="" class="popular-img">
+
+     </div>
+     <div class="popular-items">
+         <img src="../static/img/rice.webp" alt="" class="popular-img">
+
+     </div>
+     <div class="popular-items">
+         <img src="../static/img/carbonara.webp" alt="" class="popular-img">
+
+     </div>
+     <div class="popular-items">
+         <img src="../static/img/roll-original.webp" alt="" class="popular-img">
+
+     </div>
+     <div class="popular-items">
+         <img src="../static/img/some-bread-popular.webp" alt="" class="popular-img">
+
+     </div>
+ </div>
+
+
+ <!-- end of popular items div  -->
+
+<!-- Random div  -->
+
+<div class="menu-random">
+  <div class="menu-random-tiles">
+      <img src="img/bowl-1.webp" alt="" class="rand-item">
+      <img src="../static/img/bowl-1.webp" alt="" class="rand-item">
+
+      <h2 class="rand-text">Menu Types</h2>
+      <h2 class="some-num">200</h2>
+  </div>
+  <div class="menu-random-tiles">
+      <img src="../static/img/different origin.png" alt="" class="rand-item">
+      <h2 class="rand-text">Different Origin</h2>
+      <h2 class="some-num">250</h2>
+  </div>
+  <div class="menu-random-tiles">
+      <img src="../static/img/pastaandnoodles.webp" alt="" class="rand-item">
+      <h2 class="rand-text">Pasta & Noodles</h2>
+      <h2 class="some-num">850</h2>
+  </div>
+  <div class="menu-random-tiles">
+      <img src="../static/img/meal_matelogo.svg" alt="" class="rand-item">
+      <h2 class="rand-text">Meals To Go</h2>
+      <h2 class="some-num">580</h2>
+  </div>
+</div>
+
+<!-- end of random div  -->
+
+
+ <!-- popular collection  -->
+
+ <div class="popular-colection">
+
+  <img src="../static/img/curls.webp" alt="" class="curl4">
+  <div class="popular-text">
+      <h1 class="popularheading">Popular Collection</h1>
+      <p class="popular-para">Lectus proin nibh nisl condimentum id venenatis a condimentum vitae. Pellentesque
+          nec
+          nam aliquam sem et tortor.</p>
+  </div>
+
+  <div class="popular-items-gallery">
+      <div class="popular-individual-item">
+          <img src="../static/img/indiancurrymeals.webp" alt="" class="popular-image">
+          <h2 class="popular-item-name">Indian Curry Meals</h2>
+          <h3 class="cost">Starts @3.99</h3>
+      </div>
+      <div class="popular-individual-item">
+          <img src="../static/img/popular2.webp" alt="" class="popular-image">
+
+          <h2 class="popular-item-name">Chicken Rice Bowl</h2>
+          <h3 class="cost">Starts @4.99</h3>
+      </div>
+      <div class="popular-individual-item">
+          <img src="../static/img/popular3.webp" alt="" class="popular-image">
+          <h2 class="popular-item-name">Arabican Grill</h2>
+          <h3 class="cost">Starts @2.99</h3>
+      </div>
+      <div class="popular-individual-item">
+          <img src="../static/img/popular4.webp" alt="" class="popular-image">
+          <h2 class="popular-item-name">Spicy Kebab</h2>
+          <h3 class="cost">Starts @2.99</h3>
+      </div>
+      <div class="popular-individual-item">
+          <img src="../static/img/popular5.webp" alt="" class="popular-image">
+          <h2 class="popular-item-name">Grain Salad</h2>
+          <h3 class="cost">Starts @3.99</h3>
+      </div>
+  </div>
+  <img src="../static/img/curls.webp" alt="" class="curl5">
+
 </div>
 
 
 
 
-{% for item in items %}
-  <div class="item">
-    <img src="{{ item.item_image.url }}" style="width:250px;" alt="{{ item.item_name }}">
-   <!-- <h1> {{item.id}} </h1> <br> -->
-    <h2>{{ item.item_name }}</h2>
-    <p>{{ item.item_price }}</p>
-    {% if request.user.is_superuser %}
-      {% if item.is_available %}
-        <a href="{% url 'make_item_unavailable' %}?item_id={{ item.id }}"><button>Make it unavailable</button></a>
-      {% else %}
-        <a href="{% url 'make_item_available' %}?item_id={{ item.id }}"><button>Make it available</button></a>
-      {% endif %}
-    {% endif %}
-    
-    {% if item.is_available %}
-    {% if item.id in cart_dict %}
-        <a href="{% url 'cart_list' %}"> <button>Cart Page</button></a>
-    {% else %}
-        <a href="{% url 'cart' item.id %}"><button>Add to Cart</button></a>
-    {% endif %}
-{% else %}
-    <p>This item is currently unavailable</p>
-{% endif %}
+ <!-- End of popular collection  -->
 
 
-    
+
+ <!-- quotes about foood  -->
+
+ <h1 class="quote-heading">Some Great Words About Food.</h1>
+    <div class="quotes">
+
+        <div class="food-quotes">
+            “Food brings people together on many different levels. It’s nourishment of the soul and body; it’s truly
+            love.” <br>
+
+            – Giada De Laurentiis
+        </div>
+        <div class="food-quotes">
+            “If you really want to make a friend, go to someone’s house and eat with him… The people who give you their
+            food give you their heart.” <br>
+
+            – Cesar Chavez
+        </div>
+        <div class="food-quotes">
+            “The best comfort food will always be greens, cornbread, and fried chicken.” <br>
+            – Maya Angelou
+        </div>
+        <div class="food-quotes">
+            “I realized very early the power of food to evoke memory, to bring people together, to transport you to
+            other places, and I wanted to be a part of that.” <br>
+
+            – José Andrés Puerta
+        </div>
+    </div>
+
+ <!-- end of quotes about foood  -->
+
+
+  <!-- subscriber  -->
+
+  <div class="subscribe-div">
+    <div class="emailinput">
+        <input class="subscribe-input" type="email" placeholder="Your Email Address">
+        <button class="subscribe-btn">SUBSCRIBE</button>
+    </div>
+</div>
+<!-- end of subscriber  -->
+
+
+<!-- our clinets div  -->
+<h1 class="clientheading">Our Clients</h1>
+<div class="clients">
+    <img src="../static/img/client1.webp" alt="" class="client-imgs">
+    <img src="../static/img/client2.webp" alt="" class="client-imgs">
+    <img src="../static/img/client3.webp" alt="" class="client-imgs">
+    <img src="../static/img/client4.webp" alt="" class="client-imgs">
+    <img src="../static/img/client5.webp" alt="" class="client-imgs">
+</div>
+
+
+<!-- footer  -->
+
+
+<footer>
+  <img src="../static/img/curls.webp" alt="" class="footer-curl1">
+  <div class="parent-footer-divs">
+      <div class="footer-divs">
+          <h2 class="footer-divs-heading">Help</h2>
+          <h5 class="footertext-items">Search</h5>
+          <h5 class="footertext-items">Help</h5>
+          <h5 class="footertext-items">Information</h5>
+          <h5 class="footertext-items">Privacy Policy</h5>
+          <h5 class="footertext-items">Shipping Details</h5>
+      </div>
+      <div class="footer-divs">
+          <h2 class="footer-divs-heading">Support</h2>
+          <h5 class="footertext-items">Contact Us</h5>
+          <h5 class="footertext-items">About Us</h5>
+          <h5 class="footertext-items">Careers</h5>
+          <h5 class="footertext-items">Refund & Return</h5>
+          <h5 class="footertext-items">Deliveries</h5>
+      </div>
+      <div class="footer-divs">
+          <h2 class="footer-divs-heading">Information</h2>
+          <h5 class="footertext-items">Search Terms</h5>
+          <h5 class="footertext-items">Advanced Search</h5>
+          <h5 class="footertext-items">Help & Faq's</h5>
+          <h5 class="footertext-items">Store Location</h5>
+          <h5 class="footertext-items">Order & Return</h5>
+      </div>
+      <div class="footer-divs">
+
+          <h2 class="footer-divs-heading">Contact Us</h2>
+          <div class="contact-detailsdiv">
+              <i class="bi bi-house-fill"></i>
+              <h5 class="footertext-items">No: 58 A, East Madison Street, <br> Baltimore, MD, USA 4508</h5>
+          </div>
+          <div class="contact-detailsdiv">
+              <i class="bi bi-telephone-fill"></i>
+              <h5 class="footertext-items">0000-123456789</h5>
+          </div>
+          <div class="contact-detailsdiv">
+              <i class="bi bi-clock-fill"></i>
+              <h5 class="footertext-items"> 9.30AM - 7.30PM</h5>
+          </div>
+          <div class="contact-detailsdiv">
+              <i class="bi bi-envelope-fill"></i>
+              <h5 class="footertext-items">mail@mail.com</h5>
+          </div>
+      </div>
   </div>
+  <hr class="footerline">
+  <h6 class="copyright">© 2023 Meal-Mate Website</h6>
+</footer>
+
+{% endif %}
+<!-- end of footer  -->
+
+
+
+<!-- end of our clients div  -->
+
+<!-- {% for item in items %}
+<div class="item">
+  <img src="{{ item.item_image.url }}" style="width:250px;" alt="{{ item.item_name }}">
+
+  <h2>{{ item.item_name }}</h2>
+  <p>{{ item.item_price }}</p>
+  {% if request.user.is_superuser %}
+  {% if item.is_available %}
+  <a href="{% url 'make_item_unavailable' %}?item_id={{ item.id }}"><button>Make it unavailable</button></a>
+  {% else %}
+  <a href="{% url 'make_item_available' %}?item_id={{ item.id }}"><button>Make it available</button></a>
+  {% endif %}
+  {% endif %}
+
+  {% if item.is_available %}
+  {% if item.id in cart_dict %}
+  <a href="{% url 'cart_list' %}"> <button>Cart Page</button></a>
+  {% else %}
+  <a href="{% url 'cart' item.id %}"><button>Add to Cart</button></a>
+  {% endif %}
+  {% else %}
+  <p>This item is currently unavailable</p>
+  {% endif %}
+
+
+
+
+</div>
 {% endfor %}
 
 
 
 
-{% endblock %}
+
+
+{% endblock %} -->

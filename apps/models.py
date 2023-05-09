@@ -54,11 +54,11 @@ class User(AbstractUser):
         self.token_expires = None
         self.save()
 
-    def get_token_expiry(self):
-        if self.token_expiry:
-            return timezone.localtime(self.token_expiry)
-        else:
-            return None
+    # def get_token_expiry(self):
+    #     if self.token_expiry:
+    #         return timezone.localtime(self.token_expiry)
+    #     else:
+    #         return None
 # Category Model
 
 class Categories(Common):
@@ -105,14 +105,24 @@ class Order(Common):
         ('upi', 'UPI'),
         ('card', 'CARD'),
     )
-    cart = models.ForeignKey(Cart, blank=False, null=False, on_delete=models.CASCADE)
     user = models.ForeignKey(User, blank=False, null=False, on_delete=models.CASCADE)
-    total_price = models.IntegerField(null=False, blank=False)
-    payment_type = models.CharField('Payment Type',max_length=30,choices=MY_CHOICES)
+    first_name = models.CharField(max_length=100,null=False,blank=False)
+    last_name = models.CharField(max_length=100,null=False,blank=False)
+    address = models.CharField(max_length=100,null=False,blank=False)
+    zip_code = models.IntegerField(null=False, blank=False)
+    place = models.CharField(max_length=100,null=False,blank=False)
+    payment_method = models.CharField(max_length=100,null=True,blank=True)
 
     class Meta:
         db_table = 'Order'
 
 
     def __str__(self):
-        return f"{self.user.email}'s Order)" 
+        return f"{self.user.username}'s Order)" 
+    
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order,on_delete= models.CASCADE)
+    item = models.ForeignKey(Items,on_delete=models.CASCADE)
+    total_price = models.IntegerField(null=False, blank=False)
+    quantity = models.IntegerField(null=False, blank=False)

@@ -1,8 +1,33 @@
 {% extends 'layout.html' %}
 {% block content %}
-    <form action="#" method="POST">
-        {%csrf_token%}
-        {{form}}
-        <button type="submit">SignUp</button>
-    </form>
-{% endblock %}
+    <div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
+        <div class="wrapper wrapper--w960">
+            <div class="card card-2">
+                <div class="card-heading"></div>
+                <div class="card-body">
+                    <h2 class="title text-center">Register</h2>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <form method="POST" action="{% url 'signup' %}">
+                            {% csrf_token %}
+                            {{ form.username }}
+                            {{ form.password }}
+                            {{ form.email }}
+                            {{ form.phone_number }}
+                            {{ form.address }}
+                            <div class="p-t-30">
+                             
+                            <button class="btn btn--radius btn--green" type="submit">SignUp</button>
+
+                            </div>
+                        </form>
+                    <br>
+                    <br>
+                    <span class="signup-signin-text">Not a member yet?<a href="{% url 'signin' %}" style="text-decoration: none;">SignIn</a></span>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    {% endblock %}
