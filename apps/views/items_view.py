@@ -29,6 +29,7 @@ from apps.models import *
 def item_list(request, category_id=None):
     user = request.user
     if user.is_authenticated and (user.is_logged_in or user.is_superuser):
+        cart_count = Cart.objects.filter(user= request.user).count()
         categories = Categories.objects.all()
         selected_category = None
 
@@ -41,7 +42,7 @@ def item_list(request, category_id=None):
         cart_items = Cart.objects.filter(user=request.user)
         cart_dict = {item.item_id: item for item in cart_items}
 
-        context = {'items': items, 'categories': categories, 'cart_dict': cart_dict, 'selected_category': selected_category}
+        context = {'items': items, 'categories': categories, 'cart_dict': cart_dict, 'selected_category': selected_category,'cart_count': cart_count}
         return render(request, 'home.html', context)
     else: 
         return redirect('signin')

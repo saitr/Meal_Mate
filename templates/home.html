@@ -3,7 +3,7 @@
 
 <!-- navbar  -->
 {% if '/filter/' not in request.path %}
-  {% include 'navbar.html' %}
+{% include 'navbar.html' %}
 {% endif %}
 <!-- navbar end  -->
 
@@ -167,7 +167,7 @@
 <!-- Products div where we have all the products  -->
 
 <section class="products">
-{% if '/filter/' in request.path %}
+  {% if '/filter/' in request.path %}
   <h1 class="heading">The Filtered Products Are....</h1>
 
   {% else %}
@@ -177,10 +177,13 @@
   <p class="itempara">Quam pellentesque nec nam aliquam sem et tortor consequat. Ut placerat orci nulla
     pellentesque dignissim enim sit amet venenatis.</p>
 
-    {% if '/filter/' in request.path %}
+  {% if '/filter/' in request.path %}
+  <div class="text-center mt-5 mb-5">
     <a href="{% url 'home' %}" style="padding: 1%;">
-      <i class="bi bi-house-fill"></i>
-  </a>
+      <button class="btn btn-dark p-2 w-30">Back To Home</button>
+    </a>
+  </div>
+
   {% endif %}
 
   <div class="itemsdiv">
@@ -192,17 +195,19 @@
           <h2 class="item-name">{{ item.item_name }}</h2>
           {% if request.user.is_superuser %}
           {% if item.is_available %}
-          <a href="{% url 'make_item_unavailable' %}?item_id={{ item.id }}"><button class="btn btn-primary">Unavailable</button></a>
+          <a href="{% url 'make_item_unavailable' %}?item_id={{ item.id }}"><button
+              class="btn btn-primary">Unavailable</button></a>
           {% else %}
-          <a href="{% url 'make_item_available' %}?item_id={{ item.id }}"><button class="btn btn-primary">Available</button></a>
+          <a href="{% url 'make_item_available' %}?item_id={{ item.id }}"><button
+              class="btn btn-primary">Available</button></a>
           {% endif %}
           {% endif %}
           {% if item.is_available %}
           {% if item.id in cart_dict %}
           <a href="{% url 'cart_list' %}"><i class="bi bi-bag-check-fill"></i></a>
           {% else %}
-          <a href="{% url 'cart' item.id %}"> 
-          <i class="bi bi-bag-heart-fill"></i>
+          <a href="{% url 'cart' item.id %}">
+            <i class="bi bi-bag-heart-fill"></i>
 
           </a>
           {% endif %}
@@ -225,114 +230,114 @@
 {% if '/filter/' not in request.path %}
 
 
- <!-- poplular items  -->
- <h1 class="ourgal-text">Our Gallery</h1>
- <div class="ourgallery">
-     <div class="popular-items">
-         <img src="../static/img/roll-original.webp" alt="" class="popular-img">
+<!-- poplular items  -->
+<h1 class="ourgal-text">Our Gallery</h1>
+<div class="ourgallery">
+  <div class="popular-items">
+    <img src="../static/img/roll-original.webp" alt="" class="popular-img">
 
-     </div>
-     <div class="popular-items">
-         <img src="../static/img/some-bread-popular.webp" alt="" class="popular-img">
-     </div>
-     <div class="popular-items">
-         <img src="../static/img/carbonara.webp" alt="" class="popular-img">
+  </div>
+  <div class="popular-items">
+    <img src="../static/img/some-bread-popular.webp" alt="" class="popular-img">
+  </div>
+  <div class="popular-items">
+    <img src="../static/img/carbonara.webp" alt="" class="popular-img">
 
-     </div>
-     <div class="popular-items">
-         <img src="../static/img/sphagetti.webp" alt="" class="popular-img">
+  </div>
+  <div class="popular-items">
+    <img src="../static/img/sphagetti.webp" alt="" class="popular-img">
 
-     </div>
-     <div class="popular-items">
-         <img src="../static/img/rice.webp" alt="" class="popular-img">
+  </div>
+  <div class="popular-items">
+    <img src="../static/img/rice.webp" alt="" class="popular-img">
 
-     </div>
-     <div class="popular-items">
-         <img src="../static/img/carbonara.webp" alt="" class="popular-img">
+  </div>
+  <div class="popular-items">
+    <img src="../static/img/carbonara.webp" alt="" class="popular-img">
 
-     </div>
-     <div class="popular-items">
-         <img src="../static/img/roll-original.webp" alt="" class="popular-img">
+  </div>
+  <div class="popular-items">
+    <img src="../static/img/roll-original.webp" alt="" class="popular-img">
 
-     </div>
-     <div class="popular-items">
-         <img src="../static/img/some-bread-popular.webp" alt="" class="popular-img">
+  </div>
+  <div class="popular-items">
+    <img src="../static/img/some-bread-popular.webp" alt="" class="popular-img">
 
-     </div>
- </div>
+  </div>
+</div>
 
 
- <!-- end of popular items div  -->
+<!-- end of popular items div  -->
 
 <!-- Random div  -->
 
 <div class="menu-random">
   <div class="menu-random-tiles">
-      <img src="img/bowl-1.webp" alt="" class="rand-item">
-      <img src="../static/img/bowl-1.webp" alt="" class="rand-item">
+    <img src="img/bowl-1.webp" alt="" class="rand-item">
+    <img src="../static/img/bowl-1.webp" alt="" class="rand-item">
 
-      <h2 class="rand-text">Menu Types</h2>
-      <h2 class="some-num">200</h2>
+    <h2 class="rand-text">Menu Types</h2>
+    <h2 class="some-num">200</h2>
   </div>
   <div class="menu-random-tiles">
-      <img src="../static/img/different origin.png" alt="" class="rand-item">
-      <h2 class="rand-text">Different Origin</h2>
-      <h2 class="some-num">250</h2>
+    <img src="../static/img/different origin.png" alt="" class="rand-item">
+    <h2 class="rand-text">Different Origin</h2>
+    <h2 class="some-num">250</h2>
   </div>
   <div class="menu-random-tiles">
-      <img src="../static/img/pastaandnoodles.webp" alt="" class="rand-item">
-      <h2 class="rand-text">Pasta & Noodles</h2>
-      <h2 class="some-num">850</h2>
+    <img src="../static/img/pastaandnoodles.webp" alt="" class="rand-item">
+    <h2 class="rand-text">Pasta & Noodles</h2>
+    <h2 class="some-num">850</h2>
   </div>
   <div class="menu-random-tiles">
-      <img src="../static/img/meal_matelogo.svg" alt="" class="rand-item">
-      <h2 class="rand-text">Meals To Go</h2>
-      <h2 class="some-num">580</h2>
+    <img src="../static/img/meal_matelogo.svg" alt="" class="rand-item">
+    <h2 class="rand-text">Meals To Go</h2>
+    <h2 class="some-num">580</h2>
   </div>
 </div>
 
 <!-- end of random div  -->
 
 
- <!-- popular collection  -->
+<!-- popular collection  -->
 
- <div class="popular-colection">
+<div class="popular-colection">
 
   <img src="../static/img/curls.webp" alt="" class="curl4">
   <div class="popular-text">
-      <h1 class="popularheading">Popular Collection</h1>
-      <p class="popular-para">Lectus proin nibh nisl condimentum id venenatis a condimentum vitae. Pellentesque
-          nec
-          nam aliquam sem et tortor.</p>
+    <h1 class="popularheading">Popular Collection</h1>
+    <p class="popular-para">Lectus proin nibh nisl condimentum id venenatis a condimentum vitae. Pellentesque
+      nec
+      nam aliquam sem et tortor.</p>
   </div>
 
   <div class="popular-items-gallery">
-      <div class="popular-individual-item">
-          <img src="../static/img/indiancurrymeals.webp" alt="" class="popular-image">
-          <h2 class="popular-item-name">Indian Curry Meals</h2>
-          <h3 class="cost">Starts @3.99</h3>
-      </div>
-      <div class="popular-individual-item">
-          <img src="../static/img/popular2.webp" alt="" class="popular-image">
+    <div class="popular-individual-item">
+      <img src="../static/img/indiancurrymeals.webp" alt="" class="popular-image">
+      <h2 class="popular-item-name">Indian Curry Meals</h2>
+      <h3 class="cost">Starts @3.99</h3>
+    </div>
+    <div class="popular-individual-item">
+      <img src="../static/img/popular2.webp" alt="" class="popular-image">
 
-          <h2 class="popular-item-name">Chicken Rice Bowl</h2>
-          <h3 class="cost">Starts @4.99</h3>
-      </div>
-      <div class="popular-individual-item">
-          <img src="../static/img/popular3.webp" alt="" class="popular-image">
-          <h2 class="popular-item-name">Arabican Grill</h2>
-          <h3 class="cost">Starts @2.99</h3>
-      </div>
-      <div class="popular-individual-item">
-          <img src="../static/img/popular4.webp" alt="" class="popular-image">
-          <h2 class="popular-item-name">Spicy Kebab</h2>
-          <h3 class="cost">Starts @2.99</h3>
-      </div>
-      <div class="popular-individual-item">
-          <img src="../static/img/popular5.webp" alt="" class="popular-image">
-          <h2 class="popular-item-name">Grain Salad</h2>
-          <h3 class="cost">Starts @3.99</h3>
-      </div>
+      <h2 class="popular-item-name">Chicken Rice Bowl</h2>
+      <h3 class="cost">Starts @4.99</h3>
+    </div>
+    <div class="popular-individual-item">
+      <img src="../static/img/popular3.webp" alt="" class="popular-image">
+      <h2 class="popular-item-name">Arabican Grill</h2>
+      <h3 class="cost">Starts @2.99</h3>
+    </div>
+    <div class="popular-individual-item">
+      <img src="../static/img/popular4.webp" alt="" class="popular-image">
+      <h2 class="popular-item-name">Spicy Kebab</h2>
+      <h3 class="cost">Starts @2.99</h3>
+    </div>
+    <div class="popular-individual-item">
+      <img src="../static/img/popular5.webp" alt="" class="popular-image">
+      <h2 class="popular-item-name">Grain Salad</h2>
+      <h3 class="cost">Starts @3.99</h3>
+    </div>
   </div>
   <img src="../static/img/curls.webp" alt="" class="curl5">
 
@@ -341,49 +346,49 @@
 
 
 
- <!-- End of popular collection  -->
+<!-- End of popular collection  -->
 
 
 
- <!-- quotes about foood  -->
+<!-- quotes about foood  -->
 
- <h1 class="quote-heading">Some Great Words About Food.</h1>
-    <div class="quotes">
+<h1 class="quote-heading">Some Great Words About Food.</h1>
+<div class="quotes">
 
-        <div class="food-quotes">
-            “Food brings people together on many different levels. It’s nourishment of the soul and body; it’s truly
-            love.” <br>
+  <div class="food-quotes">
+    “Food brings people together on many different levels. It’s nourishment of the soul and body; it’s truly
+    love.” <br>
 
-            – Giada De Laurentiis
-        </div>
-        <div class="food-quotes">
-            “If you really want to make a friend, go to someone’s house and eat with him… The people who give you their
-            food give you their heart.” <br>
+    – Giada De Laurentiis
+  </div>
+  <div class="food-quotes">
+    “If you really want to make a friend, go to someone’s house and eat with him… The people who give you their
+    food give you their heart.” <br>
 
-            – Cesar Chavez
-        </div>
-        <div class="food-quotes">
-            “The best comfort food will always be greens, cornbread, and fried chicken.” <br>
-            – Maya Angelou
-        </div>
-        <div class="food-quotes">
-            “I realized very early the power of food to evoke memory, to bring people together, to transport you to
-            other places, and I wanted to be a part of that.” <br>
+    – Cesar Chavez
+  </div>
+  <div class="food-quotes">
+    “The best comfort food will always be greens, cornbread, and fried chicken.” <br>
+    – Maya Angelou
+  </div>
+  <div class="food-quotes">
+    “I realized very early the power of food to evoke memory, to bring people together, to transport you to
+    other places, and I wanted to be a part of that.” <br>
 
-            – José Andrés Puerta
-        </div>
-    </div>
+    – José Andrés Puerta
+  </div>
+</div>
 
- <!-- end of quotes about foood  -->
+<!-- end of quotes about foood  -->
 
 
-  <!-- subscriber  -->
+<!-- subscriber  -->
 
-  <div class="subscribe-div">
-    <div class="emailinput">
-        <input class="subscribe-input" type="email" placeholder="Your Email Address">
-        <button class="subscribe-btn">SUBSCRIBE</button>
-    </div>
+<div class="subscribe-div">
+  <div class="emailinput">
+    <input class="subscribe-input" type="email" placeholder="Your Email Address">
+    <button class="subscribe-btn">SUBSCRIBE</button>
+  </div>
 </div>
 <!-- end of subscriber  -->
 
@@ -391,11 +396,11 @@
 <!-- our clinets div  -->
 <h1 class="clientheading">Our Clients</h1>
 <div class="clients">
-    <img src="../static/img/client1.webp" alt="" class="client-imgs">
-    <img src="../static/img/client2.webp" alt="" class="client-imgs">
-    <img src="../static/img/client3.webp" alt="" class="client-imgs">
-    <img src="../static/img/client4.webp" alt="" class="client-imgs">
-    <img src="../static/img/client5.webp" alt="" class="client-imgs">
+  <img src="../static/img/client1.webp" alt="" class="client-imgs">
+  <img src="../static/img/client2.webp" alt="" class="client-imgs">
+  <img src="../static/img/client3.webp" alt="" class="client-imgs">
+  <img src="../static/img/client4.webp" alt="" class="client-imgs">
+  <img src="../static/img/client5.webp" alt="" class="client-imgs">
 </div>
 
 
@@ -405,50 +410,50 @@
 <footer>
   <img src="../static/img/curls.webp" alt="" class="footer-curl1">
   <div class="parent-footer-divs">
-      <div class="footer-divs">
-          <h2 class="footer-divs-heading">Help</h2>
-          <h5 class="footertext-items">Search</h5>
-          <h5 class="footertext-items">Help</h5>
-          <h5 class="footertext-items">Information</h5>
-          <h5 class="footertext-items">Privacy Policy</h5>
-          <h5 class="footertext-items">Shipping Details</h5>
-      </div>
-      <div class="footer-divs">
-          <h2 class="footer-divs-heading">Support</h2>
-          <h5 class="footertext-items">Contact Us</h5>
-          <h5 class="footertext-items">About Us</h5>
-          <h5 class="footertext-items">Careers</h5>
-          <h5 class="footertext-items">Refund & Return</h5>
-          <h5 class="footertext-items">Deliveries</h5>
-      </div>
-      <div class="footer-divs">
-          <h2 class="footer-divs-heading">Information</h2>
-          <h5 class="footertext-items">Search Terms</h5>
-          <h5 class="footertext-items">Advanced Search</h5>
-          <h5 class="footertext-items">Help & Faq's</h5>
-          <h5 class="footertext-items">Store Location</h5>
-          <h5 class="footertext-items">Order & Return</h5>
-      </div>
-      <div class="footer-divs">
+    <div class="footer-divs">
+      <h2 class="footer-divs-heading">Help</h2>
+      <h5 class="footertext-items">Search</h5>
+      <h5 class="footertext-items">Help</h5>
+      <h5 class="footertext-items">Information</h5>
+      <h5 class="footertext-items">Privacy Policy</h5>
+      <h5 class="footertext-items">Shipping Details</h5>
+    </div>
+    <div class="footer-divs">
+      <h2 class="footer-divs-heading">Support</h2>
+      <h5 class="footertext-items">Contact Us</h5>
+      <h5 class="footertext-items">About Us</h5>
+      <h5 class="footertext-items">Careers</h5>
+      <h5 class="footertext-items">Refund & Return</h5>
+      <h5 class="footertext-items">Deliveries</h5>
+    </div>
+    <div class="footer-divs">
+      <h2 class="footer-divs-heading">Information</h2>
+      <h5 class="footertext-items">Search Terms</h5>
+      <h5 class="footertext-items">Advanced Search</h5>
+      <h5 class="footertext-items">Help & Faq's</h5>
+      <h5 class="footertext-items">Store Location</h5>
+      <h5 class="footertext-items">Order & Return</h5>
+    </div>
+    <div class="footer-divs">
 
-          <h2 class="footer-divs-heading">Contact Us</h2>
-          <div class="contact-detailsdiv">
-              <i class="bi bi-house-fill"></i>
-              <h5 class="footertext-items">No: 58 A, East Madison Street, <br> Baltimore, MD, USA 4508</h5>
-          </div>
-          <div class="contact-detailsdiv">
-              <i class="bi bi-telephone-fill"></i>
-              <h5 class="footertext-items">0000-123456789</h5>
-          </div>
-          <div class="contact-detailsdiv">
-              <i class="bi bi-clock-fill"></i>
-              <h5 class="footertext-items"> 9.30AM - 7.30PM</h5>
-          </div>
-          <div class="contact-detailsdiv">
-              <i class="bi bi-envelope-fill"></i>
-              <h5 class="footertext-items">mail@mail.com</h5>
-          </div>
+      <h2 class="footer-divs-heading">Contact Us</h2>
+      <div class="contact-detailsdiv">
+        <i class="bi bi-house-fill"></i>
+        <h5 class="footertext-items">No: 58 A, East Madison Street, <br> Baltimore, MD, USA 4508</h5>
       </div>
+      <div class="contact-detailsdiv">
+        <i class="bi bi-telephone-fill"></i>
+        <h5 class="footertext-items">0000-123456789</h5>
+      </div>
+      <div class="contact-detailsdiv">
+        <i class="bi bi-clock-fill"></i>
+        <h5 class="footertext-items"> 9.30AM - 7.30PM</h5>
+      </div>
+      <div class="contact-detailsdiv">
+        <i class="bi bi-envelope-fill"></i>
+        <h5 class="footertext-items">mail@mail.com</h5>
+      </div>
+    </div>
   </div>
   <hr class="footerline">
   <h6 class="copyright">© 2023 Meal-Mate Website</h6>

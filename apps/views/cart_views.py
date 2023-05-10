@@ -42,12 +42,13 @@ def add_to_cart(request, item_id):
 def cart_list(request):
     if request.user.is_authenticated and request.user.token and request.user.is_logged_in or request.user.is_superuser:
         cart_items = Cart.objects.filter(user=request.user)
+        cart_count = Cart.objects.filter(user=request.user).count()
         subtotal = 0
 
         for item in cart_items:
             subtotal += item.item.item_price * item.quantity
             
-        context = {'cart_items': cart_items,'subtotal': subtotal}
+        context = {'cart_items': cart_items,'subtotal': subtotal,'cart_count': cart_count}
         return render(request, 'cart.html', context)
     else:
         return redirect('signin')
@@ -85,3 +86,17 @@ def update_cart_item(request, item_id):
 
 
 
+###################################### Cart Delete ##############################
+
+
+def delete_cart_all_items(request):
+    cart_delete = Cart.objects.filter(user=request.user)
+    cart_delete.delete()
+    return redirect('cart_list')
+
+
+
+def delete_single_cart_item(request,item_id):
+    Cart.objects.filter(pk=item_id).delete()
+
+    return redirect('cart_list')

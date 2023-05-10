@@ -122,7 +122,7 @@ def verify(request, email):
                     print("Logged in")
                 else:
                     print("Not logged in")
-                return redirect('signup')
+                return redirect('home')
             else:
                 form.add_error('otp', 'Invalid OTP. Please try again.')
     else:

@@ -22,11 +22,12 @@ class Common(models.Model):
 
 
 class User(AbstractUser):
-    username = models.CharField(max_length=255,null=True,blank=True,unique=True)
-    password = models.CharField(max_length=30,default=None,null=True,blank=True)
+    username = models.CharField(max_length=250,null=True,blank=True,unique=True)
+    password = models.CharField(max_length=100,default=None,null=True,blank=True)
     phone_number = models.IntegerField(null=True,blank=True)
     email = models.EmailField(unique=True)
     address = models.TextField(max_length=250)
+    jwt_token = models.CharField(max_length=250,unique=True,null=True)
     token = models.CharField(max_length=100,unique=True,null=True,blank=True)
     is_verified = models.BooleanField(default=False)
     is_logged_in = models.BooleanField(default=False)
@@ -39,6 +40,7 @@ class User(AbstractUser):
 
     REQUIRED_FIELDS =['username','phone_number']
 
+    
     # function to create a token 
     def save_token(self, *args, **kwargs):
         if not self.token:

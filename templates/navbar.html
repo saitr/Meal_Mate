@@ -42,11 +42,14 @@
             <i class="bi bi-person-fill"></i>
         </a>
         {% endif %}
-
+        
         <a href="{% url 'cart_list' %}" style="padding: 1%;">
-            <i class="bi bi-bag-heart-fill"></i>
+            <i class="bi bi-bag-heart-fill"></i>  
         </a>
+    <h4>({{ cart_count }})</h4>
     </div>
+
+
 </header>
 
 
