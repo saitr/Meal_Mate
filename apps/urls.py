@@ -5,8 +5,8 @@ from apps.views.cart_views import *
 from apps.views.order_views import *
 from apps.rest_api.items import *
 from apps.rest_api.users import *
-
-
+from apps.rest_api.cart import *
+from apps.rest_api.orders import *
 
 
 
@@ -60,10 +60,23 @@ urlpatterns = [
 
     path('rest_logout/',LogoutView.as_view(), name='rest_logout'),
 
+    path('rest_verify/<str:email>/',VerifyOtpView.as_view(), name='VerifyRestEmail'),
 
     ############################# Categories #######################
 
     path('rest_category/',CategoryListView.as_view(),name='rest_category'),
 
-    
+    ############################ Carts #############################
+
+    path('rest_cart/<str:username>/',CartListView.as_view(),name='rest_cart'),
+
+    path('restadd_cart/<str:username>/',CartAddView.as_view(),name='rest_cart_add'),
+
+    path('restupdate_cart/<int:pk>/<str:username>/',CartItemUpdateView.as_view(),name='rest_cart_update'),
+
+    path('delete_cart/<int:pk>/',CartDestroyView.as_view(),name='rest_cart_destroy'),
+
+    ########################### Order Api #############################
+
+    path('rest_order/',OrderAdd.as_view(),name="rest_order")
 ]

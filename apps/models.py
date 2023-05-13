@@ -128,3 +128,5 @@ class OrderItem(models.Model):
     item = models.ForeignKey(Items,on_delete=models.CASCADE)
     total_price = models.IntegerField(null=False, blank=False)
     quantity = models.IntegerField(null=False, blank=False)
+
+
