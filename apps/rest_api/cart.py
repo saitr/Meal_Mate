@@ -19,8 +19,10 @@ class CartListView(generics.ListAPIView):
     #     cart_list = Cart.objects.filter(username= request.user.username)
     #     serializer = CartListSerializer
     #     return Response({'status': 200, 'cart_list': cart_list})
-    def get(self, request, username):
-        cart_list = Cart.objects.filter(user=request.user)
+    @swagger_auto_schema(tags=['Cart List'])
+
+    def get(self, request, user_id):
+        cart_list = Cart.objects.filter(user=user_id)
         serializer = CartListSerializer(cart_list, many=True)
         return Response({'status': 200, 'cart_list': serializer.data})
     
@@ -36,20 +38,22 @@ class CartAddView(generics.GenericAPIView):
             'item_id': openapi.Schema(type=openapi.TYPE_INTEGER),
             'quantity': openapi.Schema(type=openapi.TYPE_INTEGER),
         }
-    ))
+    ),
+    tags=['Cart Add']
+    )
     # def post(self, request,username):
 
     #     # cart_items= Cart.objects.(user=request.user)
     #     serializer = CartAddSerializer(many=True)
     #     return Response({'stauts':201,'cart_items':serializer})
 
-    def post(self, request, username):
-        data = {'user': request.user.id, 'item': request.data.get('item_id'), 'quantity': request.data.get('quantity')}
+    def post(self, request,user_id):
+        data = {'user': user_id, 'item': request.data.get('item_id'), 'quantity': request.data.get('quantity')}
         # data = {'user': request.user.id, 'item': request.data.get('item.id'), 'quantity': request.data.get('quantity')}
         serializer = CartAddSerializer(data=data)
         if serializer.is_valid():
             cart_item = serializer.save()
-            return Response({'status': 201, 'cart_item': serializer.data})
+            return Response({'status': 201, 'cart_item': [serializer.data]})
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
@@ -67,11 +71,13 @@ class CartItemUpdateView(generics.GenericAPIView):
             # 'email': openapi.Schema(type=openapi.TYPE_STRING),
             'action':openapi.Schema(type=openapi.TYPE_STRING),
         }
-    ))
+    ),
+    tags=['Cart Item Update']
+    )
 
-    def put(self, request, pk,username):
+    def put(self, request, pk,user_Id):
         try:
-            cart_item = Cart.objects.get(pk=pk, user=request.user)
+            cart_item = Cart.objects.get(pk=pk, user=request.user.id)
         except Cart.DoesNotExist:
             return Response({'status': 404, 'message': 'Cart item not found.'}, status=status.HTTP_404_NOT_FOUND)
 
@@ -106,7 +112,14 @@ class CartItemUpdateView(generics.GenericAPIView):
 class CartDestroyView(generics.DestroyAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
-    
+    @swagger_auto_schema(tags=['Delete Cart Item'])
+    # @swagger_auto_schema(operation={
+    #     'operation_id': 'DeleteCartItem',
+    #     'tags': ['Cart Item Delete'],
+    #     'summary': 'Delete a cart item',
+    # },
+    # tags=['Cart Item Delete']
+    # )
     def destroy(self,request,pk):
         cart_items = Cart.objects.filter(user=request.user,pk=pk)
         cart_items.delete()

@@ -4,12 +4,13 @@ from apps.serializers.orderserializers import *
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
+from drf_yasg.utils import swagger_auto_schema
 
 
 class OrderAdd(generics.GenericAPIView):
     authentication_classes=[JWTAuthentication]
     permission_classes = [IsAuthenticated]
-
+    @swagger_auto_schema(tags=['Checkout']) 
     def post(self,request):
         cart = Cart.objects.filter(user=request.user)
         data = {
@@ -26,6 +27,7 @@ class OrderAdd(generics.GenericAPIView):
             order = serializer.save()
 
             # create order items for each cart item
+            
             for cart_item in cart:
                 order_item_data = {
                     'order': order.id,
@@ -50,6 +52,5 @@ class OrderAdd(generics.GenericAPIView):
             })
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
         
+

@@ -23,7 +23,7 @@ class Common(models.Model):
 
 class User(AbstractUser):
     username = models.CharField(max_length=250,null=True,blank=True,unique=True)
-    password = models.CharField(max_length=100,default=None,null=True,blank=True)
+    password = models.CharField(max_length=100,null=False,blank=False)
     phone_number = models.IntegerField(null=True,blank=True)
     email = models.EmailField(unique=True)
     address = models.TextField(max_length=250)
@@ -39,7 +39,8 @@ class User(AbstractUser):
     USERNAME_FIELD = 'email'
 
     REQUIRED_FIELDS =['username','phone_number']
-
+    class Meta:
+        db_table = 'User'
     
     # function to create a token 
     def save_token(self, *args, **kwargs):
@@ -124,9 +125,10 @@ class Order(Common):
     
 
 class OrderItem(models.Model):
+
     order = models.ForeignKey(Order,on_delete= models.CASCADE)
     item = models.ForeignKey(Items,on_delete=models.CASCADE)
     total_price = models.IntegerField(null=False, blank=False)
     quantity = models.IntegerField(null=False, blank=False)
 
-
+    

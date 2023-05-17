@@ -19,20 +19,29 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 # User = get_user_model()
-class SignUpView(generics.ListCreateAPIView):
+# @swagger_auto_schema(tags=['SignUP'])
+class SignUpView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = SignupSerializer
+    # @swagger_auto_schema(operation_id='User Registration')
+    @swagger_auto_schema(tags=['SignUp'])
+
+    def post(self, request, *args, **kwargs):
+        return super().post(request, *args, **kwargs)
+    
 
 
 class VerifyOtpView(generics.GenericAPIView):
+
     permission_classes = [AllowAny]
     @swagger_auto_schema(request_body=openapi.Schema(
         type=openapi.TYPE_OBJECT,
         properties={
             # 'email': openapi.Schema(type=openapi.TYPE_STRING),
             'otp': openapi.Schema(type=openapi.TYPE_STRING)
-        }
-    ))
+        },),
+        tags=['Confirm Registration']
+    )
 
     def post(self, request,email):
         user = User.objects.filter(email=email).first()
@@ -62,7 +71,6 @@ class VerifyOtpView(generics.GenericAPIView):
         else:
             return Response({'detail': 'Invalid otp'}, status=status.HTTP_401_UNAUTHORIZED)
         
-
 # class SigninView(generics.GenericAPIView):
 #     permission_classes = [AllowAny]
 #     serializer_class = SignInSerializer
@@ -89,6 +97,7 @@ class VerifyOtpView(generics.GenericAPIView):
 class SigninView(generics.GenericAPIView):
     permission_classes = [AllowAny]
     serializer_class = SignInSerializer
+    @swagger_auto_schema(tags=['SignIn'])
 
     def post(self, request):
         username = request.data.get('username')
@@ -116,6 +125,7 @@ class LogoutView(generics.GenericAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
     
+    @swagger_auto_schema(tags=['Logout'])
     def post(self, request):
         user = request.user
         user.is_logged_in = False
@@ -123,7 +133,5 @@ class LogoutView(generics.GenericAPIView):
         user.save()
         logout(request)
         return Response({'detail': 'Successfully logged out'})
-
-    
 
 

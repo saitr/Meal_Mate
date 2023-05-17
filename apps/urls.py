@@ -49,9 +49,8 @@ urlpatterns = [
 
     ####################### rest views ########################
 
-    path('item_list/',ItemList.as_view(), name='item_list'),
+    path('item_list/',ItemList.as_view(), name='Item List'),
     
-
     ######################## user rest view ###################
 
     path('rest_signup/',SignUpView.as_view(), name='rest_signup'),
@@ -68,11 +67,11 @@ urlpatterns = [
 
     ############################ Carts #############################
 
-    path('rest_cart/<str:username>/',CartListView.as_view(),name='rest_cart'),
+    path('rest_cart/<int:user_id>/',CartListView.as_view(),name='rest_cart'),
 
-    path('restadd_cart/<str:username>/',CartAddView.as_view(),name='rest_cart_add'),
+    path('restadd_cart/<int:user_id>/',CartAddView.as_view(),name='rest_cart_add'),
 
-    path('restupdate_cart/<int:pk>/<str:username>/',CartItemUpdateView.as_view(),name='rest_cart_update'),
+    path('restupdate_cart/<int:pk>/<int:user_id>/',CartItemUpdateView.as_view(),name='rest_cart_update'),
 
     path('delete_cart/<int:pk>/',CartDestroyView.as_view(),name='rest_cart_destroy'),
 

@@ -262,9 +262,6 @@ RECAPTCHA_PRIVATE_KEY = 'MyRecaptchaPrivateKey456'
 
 
 
-
-
-
 ##### Cloudinary settings #####
 
 # // Config
@@ -274,3 +271,5 @@ cloudinary.config(
   api_secret = "idwgMoXjfn9j7XX_L_Abv2X8V0c",
   secure = True
 )
+
+
