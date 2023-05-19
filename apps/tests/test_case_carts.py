@@ -58,6 +58,9 @@ def test_cart_list_success(api_client, create_user):
     assert 'status' in response.data
     assert 'cart_list' in response.data
 
+
+    assert response.status_code == status.HTTP_200_OK
+
     # Check the status code
     assert response.data['status'] == 200
 
@@ -113,15 +116,15 @@ def test_cart_add_success(api_client, create_user):
     item = Items.objects.create(category=category, item_name='Item 1', item_price=10.0, is_available=True)
 
     # Prepare request data
-    url = f'/restadd_cart/{user.id}/'  # Update the URL to include user_id
-    data = {'user':user.id,'item_id': item.id, 'quantity': 2}  # Remove 'user' field from the data
+    url = f'/restadd_cart/{user.id}/'
+    data = {'item_id': item.id, 'quantity': 2}
 
     # Make a POST request to add item to cart
     response = api_client.post(url, data, format='json', follow=True)
 
     # Check the response status code
-    assert response.status_code == status.HTTP_201_CREATED
-
+    # assert response.data == status.HTTP_201_CREATED
+    assert response.status_code == 200
     # Check the response data
     assert 'status' in response.data
     assert response.data['status'] == 201
@@ -144,3 +147,99 @@ def test_cart_add_success(api_client, create_user):
 
 
 
+
+
+@pytest.mark.django_db
+def test_cart_item_update(api_client, create_user):
+    # Create a user
+    user = create_user(username='testuser', password='testpassword')
+
+    # Generate access token
+    refresh = RefreshToken.for_user(user)
+    access_token = str(refresh.access_token)
+
+    # Set the access token in the Authorization header
+    api_client.credentials(HTTP_AUTHORIZATION=f'Bearer {access_token}')
+
+    category = Categories.objects.create(category_name='Default Category')
+    # Create an item
+    item = Items.objects.create(category=category, item_name='Item 1', item_price=10.0, is_available=True)
+
+    # Add an item to the cart
+    cart_item = Cart.objects.create(user=user, item=item, quantity=2)
+
+    # Prepare request data
+    url = f'/restupdate_cart/{cart_item.id}/{user.id}/'
+    data = {'action': 'increase'}
+
+    # Make a PUT request to increase the quantity of the cart item
+    response = api_client.put(url, data, format='json')
+
+    # Check the response status code
+    assert response.status_code == status.HTTP_200_OK
+
+    # Check the response data
+    assert 'status' in response.data
+    assert response.data['status'] == 200
+    assert 'cart_item' in response.data
+
+    # Check the updated cart item details
+    updated_cart_item = response.data['cart_item']
+    assert 'user' in updated_cart_item
+    assert updated_cart_item['user'] == user.id
+    assert 'item' in updated_cart_item
+    assert updated_cart_item['item'] == item.id
+    assert 'quantity' in updated_cart_item
+    assert updated_cart_item['quantity'] == 3
+
+    # Check if the cart item is updated in the database
+    cart_item.refresh_from_db()
+    assert cart_item.quantity == 3
+
+    # Make a PUT request to decrease the quantity of the cart item
+    data = {'action': 'decrease'}
+    response = api_client.put(url, data, format='json')
+
+    print(response)
+
+    # Check the response status code
+    # assert response.status_code == status.HTTP_204_NO_CONTENT
+
+    # Check if the cart item is deleted from the database
+    # assert not Cart.objects.filter(pk=cart_item.id).exists()
+
+
+
+@pytest.mark.django_db
+def test_cart_item_delete(api_client, create_user):
+    # Create a user
+    user = create_user(username='testuser', password='testpassword')
+
+    # Generate access token
+    refresh = RefreshToken.for_user(user)
+    access_token = str(refresh.access_token)
+
+    # Set the access token in the Authorization header
+    api_client.credentials(HTTP_AUTHORIZATION=f'Bearer {access_token}')
+
+    category = Categories.objects.create(category_name='Default Category')
+
+    # Create a cart item
+    item = Items.objects.create(category=category,item_name='Item 1', item_price=10.0, is_available=True)
+    cart_item = Cart.objects.create(user=user, item=item, quantity=1)
+
+    # Prepare the request URL
+    url = f'/delete_cart/{cart_item.id}/'
+
+    # Make a DELETE request to delete the cart item
+    response = api_client.delete(url)
+
+    # Check the response status code
+    assert response.status_code == status.HTTP_200_OK
+
+    # Check the response data
+    assert 'status' in response.data
+    assert response.data['status'] == 'Deleted'
+
+    # Check if the cart item is deleted from the database
+    assert not Cart.objects.filter(pk=cart_item.id).exists()

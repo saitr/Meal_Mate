@@ -22,7 +22,7 @@ class CartListView(generics.ListAPIView):
     @swagger_auto_schema(tags=['Cart List'])
 
     def get(self, request, user_id):
-        cart_list = Cart.objects.filter(user=user_id)
+        cart_list = Cart.objects.filter(user=request.user)
         serializer = CartListSerializer(cart_list, many=True)
         return Response({'status': 200, 'cart_list': serializer.data})
     
@@ -53,7 +53,7 @@ class CartAddView(generics.GenericAPIView):
         serializer = CartAddSerializer(data=data)
         if serializer.is_valid():
             cart_item = serializer.save()
-            return Response({'status': 201, 'cart_item': [serializer.data]})
+            return Response({'status': 201, 'cart_item': serializer.data})
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
@@ -75,9 +75,9 @@ class CartItemUpdateView(generics.GenericAPIView):
     tags=['Cart Item Update']
     )
 
-    def put(self, request, pk,user_Id):
+    def put(self, request, pk,user_id):
         try:
-            cart_item = Cart.objects.get(pk=pk, user=request.user.id)
+            cart_item = Cart.objects.get(pk=pk, user=user_id)
         except Cart.DoesNotExist:
             return Response({'status': 404, 'message': 'Cart item not found.'}, status=status.HTTP_404_NOT_FOUND)
 

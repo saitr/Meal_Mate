@@ -17,9 +17,7 @@ class Common(models.Model):
     class Meta:
         abstract = True
 
-
 # User Model 
-
 
 class User(AbstractUser):
     username = models.CharField(max_length=250,null=True,blank=True,unique=True)
@@ -131,4 +129,3 @@ class OrderItem(models.Model):
     total_price = models.IntegerField(null=False, blank=False)
     quantity = models.IntegerField(null=False, blank=False)
 
-    

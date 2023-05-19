@@ -1,0 +1,12 @@
+[0;1;32m●[0m docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: [0;1;32mactive (running)[0m since Thu 2023-05-18 11:57:19 IST; 1h 6min ago
+TriggeredBy: [0;1;32m●[0m docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 1561 (dockerd)
+      Tasks: 9
+     Memory: 18.3M
+     CGroup: /system.slice/docker.service
+             └─1561 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+Warning: some journal files were not opened due to insufficient permissions.
