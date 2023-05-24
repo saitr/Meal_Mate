@@ -24,6 +24,7 @@ urlpatterns = [
     path('signin/',signin,name='signin'),
     # path('home/',home,name='home'),
     path('user_details/',user_details,name='user_details'),
+    path('subscriber/',subscribers,name='subscriber'),
 
     ###### Home pageurls
     
@@ -61,6 +62,9 @@ urlpatterns = [
 
     path('rest_verify/<str:email>/',VerifyOtpView.as_view(), name='VerifyRestEmail'),
 
+    path('rest_subscriber/',Subscribers.as_view(),name='rest_subscribers'),
+
+
     ############################# Categories #######################
 
     path('rest_category/',CategoryListView.as_view(),name='rest_category'),
@@ -78,4 +82,7 @@ urlpatterns = [
     ########################### Order Api #############################
 
     path('rest_order/',OrderAdd.as_view(),name="rest_order")
+
+
+
 ]

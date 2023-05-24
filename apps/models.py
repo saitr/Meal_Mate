@@ -129,3 +129,12 @@ class OrderItem(models.Model):
     total_price = models.IntegerField(null=False, blank=False)
     quantity = models.IntegerField(null=False, blank=False)
 
+
+################ subscriber table ######################
+
+class SubscriberModel(models.Model):
+    subscriber_email = models.EmailField('Subscriber Email',null=False,blank=False)
+
+    class Meta:
+        db_table = 'Subscribers'
+    

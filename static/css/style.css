@@ -562,6 +562,15 @@ h1.quote-heading {
   /* margin-top: 1%; */
   /* position: absolute; */
   padding-top: 15%;
+  position: relative;
+}
+
+.error {
+  display: block;
+  position: absolute;
+  top: 68%;
+  font-size: xx-large;
+  font-weight: bolder;
 }
 
 /* input[type="email"] {
@@ -572,6 +581,7 @@ h1.quote-heading {
 
 input.subscribe-input {
   width: 25%;
+  padding:1%;
 }
 
 button.subscribe-btn {
@@ -808,4 +818,10 @@ i{
   color: black;
   cursor: pointer;
 }
+
+form.subscriber-form {
+  display: flex;
+  justify-content: center;
+}
+
 

@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="subscribe-div">
+  <div class="emailinput">
+    <form action="{% url 'home' %}" method="POST" class="subscriber-form">
+      {% csrf_token %}
+      {{ form_context.form.subscriber_email }}
+      {% if form_context.form.subscriber_email.errors %}
+        <div class="error" style="color:white">{{ form_context.form.subscriber_email.errors }}</div>
+      {% endif %}
+      <button class="subscribe-btn" type="submit">SUBSCRIBE</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
+

@@ -17,6 +17,8 @@ from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.shortcuts import render, redirect
+
 
 # User = get_user_model()
 # @swagger_auto_schema(tags=['SignUP'])
@@ -135,3 +137,15 @@ class LogoutView(generics.GenericAPIView):
         return Response({'detail': 'Successfully logged out'})
 
 
+
+
+############################## subscribers ############################
+
+
+class Subscribers(generics.ListCreateAPIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+    queryset= SubscriberModel.objects.all()
+    serializer_class = SubscribersSerializer
+
+    

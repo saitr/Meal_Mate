@@ -11,8 +11,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 class ItemList(generics.ListCreateAPIView):
-    # authentication_classes=[JWTAuthentication]
-    # permission_classes = [IsAuthenticated]
+    authentication_classes=[JWTAuthentication]
+    permission_classes = [IsAuthenticated]
     queryset = Items.objects.all()
     serializer_class = ItemSerializer
     # @swagger_auto_schema(tags=['Item List'])

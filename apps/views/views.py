@@ -4,9 +4,9 @@ from django.core.mail import send_mail,EmailMultiAlternatives
 from django.shortcuts import render, redirect
 from django.utils.crypto import get_random_string
 # form imports 
-from apps.forms import SignUpForm,VerifyOTPForm,SignInForm,ChangeUserDetails
+from apps.forms import SignUpForm,VerifyOTPForm,SignInForm,ChangeUserDetails, SubscribersForm
 from django.http import HttpResponse
-from apps.models import User
+from apps.models import *
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from rest_framework.authtoken.models import Token
@@ -287,10 +287,63 @@ def user_details(request):
 
 
 
+################### Subscribers #####################
 
+# @login_required
+# def subscribers(request):
+#     if request.method == 'POST':
+#         form = SubscribersForm(request.POST)
+#         if form.is_valid():
+#             subscribers_email = form.cleaned_data['subscriber_email']
+#             # if SubscriberModel.objects.filter(subscriber_email=subscriber_email).exists():
+#             #     form.add_error('email', 'Email already exists')
+#             #     return render(request, 'home.html', {'form': form})
+#             subscriber = SubscriberModel.objects.create(
+#                 subscriber_email = form.cleaned_data['subscriber_email']
+#             )
+        
+#         # to send the thanks email for the subscribers 
 
+#             subject = 'Thanks For Subscribing'
+#             message = "Thanks for choosing to become active member now you are in the list of people where they don't miss the opportunity to grab good deals"
+#             from_email = settings.DEFAULT_FROM_EMAIL
+#             recipient_list = [subscribers_email]
+#             send_mail(subject,message,from_email,recipient_list)
+#             return redirect('home')
+#         else:
+#             form = SubscribersForm()
+#         return render(request,'subscriber.html',{'form':form})
+        
 
+@login_required
+def subscribers(request):
+    if request.method == 'POST':
+        form = SubscribersForm(request.POST)
+        print('this is the subscriber form',form)
+        if form.is_valid():
+            subscriber_email = form.cleaned_data['subscriber_email']
+            print('this is the subscribers form input email',subscriber_email)
+            
+            # Check if subscriber with the same email already exists
 
+            
+            # Create the new subscriber if it's a unique email
+            subscriber = SubscriberModel.objects.create(
+                subscriber_email=subscriber_email
+            )
+            print('this is the subscriber email',subscriber)
+
+                # Send the thanks email to the subscriber
+            subject = 'Thanks For Subscribing'
+            message = "Thanks for choosing to become an active member. You are now in the list of people who don't miss the opportunity to grab good deals."
+            from_email = settings.DEFAULT_FROM_EMAIL
+            recipient_list = [subscriber_email]
+            send_mail(subject, message, from_email, recipient_list)
+
+            return redirect('home')
+    else:
+        form = SubscribersForm()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+    return render(request, 'home.html', {'form': form})
 
 
 

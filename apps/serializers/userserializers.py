@@ -24,11 +24,29 @@ class SignupSerializer(serializers.ModelSerializer):
         return user
     
 
-
-    
-
-
 class SignInSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('username','password')
+
+
+################# subscribers serializer ##################
+
+class SubscribersSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SubscriberModel
+        fields = ('id','subscriber_email')
+
+
+    def create(self,validated_data):
+        subscriber = SubscriberModel.objects.create(**validated_data)
+        subscriber.save()
+        subject = "Thanks For Subscribing"
+        message = f"Thanks for choosing to become active member now you are in the list of people where they don't miss the opportunity to grab good deals"
+        from_email = settings.DEFAULT_FROM_EMAIL
+        recipient_list = [validated_data['subscriber_email']]
+        send_mail(subject,message,from_email,recipient_list)
+        return subscriber
+
+
+

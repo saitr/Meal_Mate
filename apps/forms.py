@@ -4,7 +4,7 @@ from .models import User
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.core.exceptions import ValidationError
-
+from apps.models import *
 #######################Sign UP form##################################
 
 class SignUpForm(forms.ModelForm):
@@ -89,3 +89,9 @@ class OrderForm(forms.Form):
     def save(self, *args, **kwargs):
         # Save the order details here
         pass
+
+
+
+class SubscribersForm(forms.Form):
+    subscriber_email = forms.EmailField(widget=forms.EmailInput(attrs={'class': "subscribe-input", 'placeholder': 'Enter Your Email'}))
+    

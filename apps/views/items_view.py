@@ -4,6 +4,7 @@ from django.core.mail import send_mail,EmailMultiAlternatives
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from apps.models import *
+from apps.forms import SignUpForm,VerifyOTPForm,SignInForm,ChangeUserDetails, SubscribersForm
 
 
 # def item_list(request):
@@ -29,7 +30,7 @@ from apps.models import *
 def item_list(request, category_id=None):
     user = request.user
     if user.is_authenticated and (user.is_logged_in or user.is_superuser):
-        cart_count = Cart.objects.filter(user= request.user).count()
+        cart_count = Cart.objects.filter(user=request.user).count()
         categories = Categories.objects.all()
         selected_category = None
 
@@ -37,15 +38,45 @@ def item_list(request, category_id=None):
             selected_category = Categories.objects.get(pk=category_id)
             items = Items.objects.filter(category=selected_category)
         else:
-            items = Items.objects.filter()
+            items = Items.objects.all()
 
         cart_items = Cart.objects.filter(user=request.user)
         cart_dict = {item.item_id: item for item in cart_items}
 
-        context = {'items': items, 'categories': categories, 'cart_dict': cart_dict, 'selected_category': selected_category,'cart_count': cart_count}
+        if request.method == 'POST':
+            form = SubscribersForm(request.POST)
+            print('this is the subscriber form', form)
+            if form.is_valid():
+                subscriber_email = form.cleaned_data['subscriber_email']
+                # print('this is the subscriber form input email', subscriber_email)
+
+                # Check if subscriber with the same email already exists
+                if SubscriberModel.objects.filter(subscriber_email=subscriber_email).exists():
+                    form.add_error('subscriber_email', 'You are already subscribed')
+                else:
+                    # Create the new subscriber if it's a unique email
+                    subscriber = SubscriberModel.objects.create(
+                        subscriber_email=subscriber_email
+                    )
+                    print('this is the subscriber email', subscriber)
+
+                    # Send the thanks email to the subscriber
+                    subject = 'Thanks For Subscribing'
+                    message = "Thanks for choosing to become an active member. You are now in the list of people who don't miss the opportunity to grab good deals."
+                    from_email = settings.DEFAULT_FROM_EMAIL
+                    recipient_list = [subscriber_email]
+                    send_mail(subject, message, from_email, recipient_list)
+
+                    return redirect('home')
+        else:
+            form = SubscribersForm()
+
+        form_context = {'form': form}
+        context = {'items': items, 'categories': categories, 'cart_dict': cart_dict, 'selected_category': selected_category, 'cart_count': cart_count, 'form_context': form_context}
         return render(request, 'home.html', context)
-    else: 
+    else:
         return redirect('signin')
+
 
 
     
