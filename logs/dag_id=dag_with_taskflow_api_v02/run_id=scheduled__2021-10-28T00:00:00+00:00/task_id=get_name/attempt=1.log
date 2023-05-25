@@ -1,12 +1,37 @@
-[2023-05-23T10:08:49.507+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-10-28T00:00:00+00:00 [queued]>
-[2023-05-23T10:08:49.524+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-10-28T00:00:00+00:00 [queued]>
-[2023-05-23T10:08:49.525+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 6
-[2023-05-23T10:08:49.824+0000] {taskinstance.py:1327} INFO - Executing <Task(_PythonDecoratedOperator): get_name> on 2021-10-28 00:00:00+00:00
-[2023-05-23T10:08:49.840+0000] {standard_task_runner.py:57} INFO - Started process 702 to run task
-[2023-05-23T10:08:50.066+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'dag_with_taskflow_api_v02', 'get_name', 'scheduled__2021-10-28T00:00:00+00:00', '--job-id', '6', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmpz0ge95qq']
-[2023-05-23T10:08:50.089+0000] {standard_task_runner.py:85} INFO - Job 6: Subtask get_name
-[2023-05-23T10:08:51.301+0000] {task_command.py:410} INFO - Running <TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-10-28T00:00:00+00:00 [running]> on host fb58d5a02d2c
-[2023-05-23T10:09:07.781+0000] {job.py:216} ERROR - Job heartbeat got an exception
+[2023-05-24T15:15:11.377+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-10-28T00:00:00+00:00 [queued]>
+[2023-05-24T15:15:11.579+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-10-28T00:00:00+00:00 [queued]>
+[2023-05-24T15:15:11.580+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 6
+[2023-05-24T15:15:11.905+0000] {taskinstance.py:1327} INFO - Executing <Task(_PythonDecoratedOperator): get_name> on 2021-10-28 00:00:00+00:00
+[2023-05-24T15:15:12.051+0000] {standard_task_runner.py:57} INFO - Started process 219 to run task
+[2023-05-24T15:15:12.130+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'dag_with_taskflow_api_v02', 'get_name', 'scheduled__2021-10-28T00:00:00+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmp_xs779hn']
+[2023-05-24T15:15:12.156+0000] {standard_task_runner.py:85} INFO - Job 9: Subtask get_name
+[2023-05-24T15:15:13.444+0000] {task_command.py:410} INFO - Running <TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-10-28T00:00:00+00:00 [running]> on host 942de29f183d
+[2023-05-24T15:15:14.466+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Sai' AIRFLOW_CTX_DAG_ID='dag_with_taskflow_api_v02' AIRFLOW_CTX_TASK_ID='get_name' AIRFLOW_CTX_EXECUTION_DATE='2021-10-28T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2021-10-28T00:00:00+00:00'
+[2023-05-24T15:15:14.471+0000] {python.py:183} INFO - Done. Returned value was: {'first_name': 'Sai', 'last_name': 'Tr'}
+[2023-05-24T15:15:14.776+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=dag_with_taskflow_api_v02, task_id=get_name, execution_date=20211028T000000, start_date=20230524T151511, end_date=20230524T151514
+[2023-05-24T15:15:15.056+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
+[2023-05-24T15:15:15.758+0000] {taskinstance.py:2651} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2023-05-25T06:49:02.148+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-10-28T00:00:00+00:00 [queued]>
+[2023-05-25T06:49:02.247+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-10-28T00:00:00+00:00 [queued]>
+[2023-05-25T06:49:02.247+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 6
+[2023-05-25T06:49:02.417+0000] {taskinstance.py:1327} INFO - Executing <Task(_PythonDecoratedOperator): get_name> on 2021-10-28 00:00:00+00:00
+[2023-05-25T06:49:02.459+0000] {standard_task_runner.py:57} INFO - Started process 1753 to run task
+[2023-05-25T06:49:02.523+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'dag_with_taskflow_api_v02', 'get_name', 'scheduled__2021-10-28T00:00:00+00:00', '--job-id', '10', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmptzbx61tq']
+[2023-05-25T06:49:02.527+0000] {standard_task_runner.py:85} INFO - Job 10: Subtask get_name
+[2023-05-25T06:49:03.056+0000] {task_command.py:410} INFO - Running <TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-10-28T00:00:00+00:00 [running]> on host 6bd07c7477d9
+[2023-05-25T06:49:04.004+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Sai' AIRFLOW_CTX_DAG_ID='dag_with_taskflow_api_v02' AIRFLOW_CTX_TASK_ID='get_name' AIRFLOW_CTX_EXECUTION_DATE='2021-10-28T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2021-10-28T00:00:00+00:00'
+[2023-05-25T06:49:04.005+0000] {python.py:183} INFO - Done. Returned value was: {'first_name': 'Sai', 'last_name': 'Tr'}
+[2023-05-25T06:49:04.413+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=dag_with_taskflow_api_v02, task_id=get_name, execution_date=20211028T000000, start_date=20230525T064902, end_date=20230525T064904
+[2023-05-25T06:49:04.687+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
+[2023-05-25T06:49:05.123+0000] {taskinstance.py:2651} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-05-25T10:16:31.829+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-10-28T00:00:00+00:00 [queued]>
+[2023-05-25T10:16:31.950+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-10-28T00:00:00+00:00 [queued]>
+[2023-05-25T10:16:31.951+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 6
+[2023-05-25T10:16:33.125+0000] {taskinstance.py:1327} INFO - Executing <Task(_PythonDecoratedOperator): get_name> on 2021-10-28 00:00:00+00:00
+[2023-05-25T10:16:33.469+0000] {standard_task_runner.py:57} INFO - Started process 1277 to run task
+[2023-05-25T10:16:33.905+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'dag_with_taskflow_api_v02', 'get_name', 'scheduled__2021-10-28T00:00:00+00:00', '--job-id', '15', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmps9_i745t']
+[2023-05-25T10:16:34.838+0000] {standard_task_runner.py:85} INFO - Job 15: Subtask get_name
+[2023-05-25T10:17:57.977+0000] {job.py:216} ERROR - Job heartbeat got an exception
 Traceback (most recent call last):
   File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 3366, in _wrap_pool_connect
     return fn()
@@ -42,18 +67,20 @@ psycopg2.OperationalError: could not translate host name "postgres" to address: 
 The above exception was the direct cause of the following exception:
 
 Traceback (most recent call last):
-  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/jobs/job.py", line 187, in heartbeat
-    session.merge(self)
-  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3062, in merge
-    _resolve_conflict_map=_resolve_conflict_map,
-  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3140, in _merge
-    options=options,
-  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 2861, in get
-    execution_options=execution_options,
-  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 2979, in _get_impl
-    load_options=load_options,
-  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/loading.py", line 534, in load_on_pk_identity
-    bind_arguments=bind_arguments,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/jobs/job.py", line 212, in heartbeat
+    heartbeat_callback(session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 73, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/jobs/local_task_job_runner.py", line 243, in heartbeat_callback
+    self.task_instance.refresh_from_db()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 76, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 811, in refresh_from_db
+    ti = qry.one_or_none()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2850, in one_or_none
+    return self._iter().one_or_none()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2919, in _iter
+    execution_options={"_sa_orm_load_options": self.load_options},
   File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1716, in execute
     conn = self._connection_for_bind(bind)
   File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1556, in _connection_for_bind
@@ -103,92 +130,9 @@ Traceback (most recent call last):
 sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not translate host name "postgres" to address: Temporary failure in name resolution
 
 (Background on this error at: https://sqlalche.me/e/14/e3q8)
-[2023-05-23T10:14:19.831+0000] {local_task_job_runner.py:202} ERROR - Heartbeat time limit exceeded!
-[2023-05-23T10:14:19.862+0000] {process_utils.py:135} INFO - Sending Signals.SIGTERM to group 702. PIDs of all processes in the group: [702]
-[2023-05-23T10:14:19.862+0000] {process_utils.py:86} INFO - Sending the signal Signals.SIGTERM to group 702
-[2023-05-23T10:14:22.225+0000] {taskinstance.py:1517} ERROR - Received SIGTERM. Terminating subprocesses.
-[2023-05-23T10:14:23.934+0000] {taskinstance.py:1824} ERROR - Task failed with exception
-Traceback (most recent call last):
-  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1407, in _run_raw_task
-    self._execute_task_with_callbacks(context, test_mode)
-  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1535, in _execute_task_with_callbacks
-    RenderedTaskInstanceFields.delete_old_records(self.task_id, self.dag_id)
-  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 76, in wrapper
-    return func(*args, session=session, **kwargs)
-  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/renderedtifields.py", line 223, in delete_old_records
-    session=session,
-  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/retries.py", line 78, in wrapped_function
-    for attempt in run_with_db_retries(max_retries=retries, logger=logger, **retry_kwargs):
-  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 347, in __iter__
-    do = self.iter(retry_state=retry_state)
-  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 314, in iter
-    return fut.result()
-  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 428, in result
-    return self.__get_result()
-  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
-    raise self._exception
-  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/retries.py", line 87, in wrapped_function
-    return func(*args, **kwargs)
-  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/renderedtifields.py", line 245, in _do_delete_old_records
-    ).delete(synchronize_session=False)
-  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3225, in delete
-    execution_options={"synchronize_session": synchronize_session},
-  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1716, in execute
-    conn = self._connection_for_bind(bind)
-  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1556, in _connection_for_bind
-    engine, execution_options
-  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 750, in _connection_for_bind
-    conn = bind.connect()
-  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 3320, in connect
-    return self._connection_cls(self, close_with_result=close_with_result)
-  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 96, in __init__
-    else engine.raw_connection()
-  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 3399, in raw_connection
-    return self._wrap_pool_connect(self.pool.connect, _connection)
-  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 3366, in _wrap_pool_connect
-    return fn()
-  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 327, in connect
-    return _ConnectionFairy._checkout(self)
-  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 894, in _checkout
-    fairy = _ConnectionRecord.checkout(pool)
-  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 493, in checkout
-    rec = pool._do_get()
-  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/pool/impl.py", line 256, in _do_get
-    return self._create_connection()
-  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 273, in _create_connection
-    return _ConnectionRecord(self)
-  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 388, in __init__
-    self.__connect()
-  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 691, in __connect
-    pool.logger.debug("Error on connect(): %s", e)
-  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
-    with_traceback=exc_tb,
-  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
-    raise exception
-  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 686, in __connect
-    self.dbapi_connection = connection = pool._invoke_creator(self)
-  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/create.py", line 574, in connect
-    return dialect.connect(*cargs, **cparams)
-  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 598, in connect
-    return self.dbapi.connect(*cargs, **cparams)
-  File "/home/airflow/.local/lib/python3.7/site-packages/psycopg2/__init__.py", line 122, in connect
-    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
-  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1519, in signal_handler
-    raise AirflowException("Task received SIGTERM signal")
-airflow.exceptions.AirflowException: Task received SIGTERM signal
-[2023-05-23T10:14:24.284+0000] {taskinstance.py:1350} INFO - Marking task as UP_FOR_RETRY. dag_id=dag_with_taskflow_api_v02, task_id=get_name, execution_date=20211028T000000, start_date=20230523T100849, end_date=20230523T101424
-[2023-05-23T10:14:24.780+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 6 for task get_name (Task received SIGTERM signal; 702)
-[2023-05-23T10:14:24.993+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=702, status='terminated', exitcode=1, started='10:08:49') (702) terminated with exit code 1
-[2023-05-23T10:26:25.109+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-10-28T00:00:00+00:00 [queued]>
-[2023-05-23T10:26:25.249+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-10-28T00:00:00+00:00 [queued]>
-[2023-05-23T10:26:25.250+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 6
-[2023-05-23T10:26:25.577+0000] {taskinstance.py:1327} INFO - Executing <Task(_PythonDecoratedOperator): get_name> on 2021-10-28 00:00:00+00:00
-[2023-05-23T10:26:25.646+0000] {standard_task_runner.py:57} INFO - Started process 214 to run task
-[2023-05-23T10:26:25.714+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'dag_with_taskflow_api_v02', 'get_name', 'scheduled__2021-10-28T00:00:00+00:00', '--job-id', '12', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmpo0aed9fe']
-[2023-05-23T10:26:25.743+0000] {standard_task_runner.py:85} INFO - Job 12: Subtask get_name
-[2023-05-23T10:26:26.588+0000] {task_command.py:410} INFO - Running <TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-10-28T00:00:00+00:00 [running]> on host 8a6612510f4c
-[2023-05-23T10:26:28.238+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='coder2j' AIRFLOW_CTX_DAG_ID='dag_with_taskflow_api_v02' AIRFLOW_CTX_TASK_ID='get_name' AIRFLOW_CTX_EXECUTION_DATE='2021-10-28T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2021-10-28T00:00:00+00:00'
-[2023-05-23T10:26:28.244+0000] {python.py:183} INFO - Done. Returned value was: {'first_name': 'Jerry', 'last_name': 'Fridman'}
-[2023-05-23T10:26:28.665+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=dag_with_taskflow_api_v02, task_id=get_name, execution_date=20211028T000000, start_date=20230523T102625, end_date=20230523T102628
-[2023-05-23T10:26:28.867+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
-[2023-05-23T10:26:29.637+0000] {taskinstance.py:2651} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2023-05-25T10:18:20.318+0000] {task_command.py:410} INFO - Running <TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-10-28T00:00:00+00:00 [running]> on host b1ae37a9584e
+[2023-05-25T10:18:28.257+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Sai' AIRFLOW_CTX_DAG_ID='dag_with_taskflow_api_v02' AIRFLOW_CTX_TASK_ID='get_name' AIRFLOW_CTX_EXECUTION_DATE='2021-10-28T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2021-10-28T00:00:00+00:00'
+[2023-05-25T10:18:28.264+0000] {python.py:183} INFO - Done. Returned value was: {'first_name': 'Sai', 'last_name': 'Tr'}
+[2023-05-25T10:18:28.605+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=dag_with_taskflow_api_v02, task_id=get_name, execution_date=20211028T000000, start_date=20230525T101631, end_date=20230525T101828
+[2023-05-25T10:18:28.712+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
+[2023-05-25T10:18:28.916+0000] {taskinstance.py:2651} INFO - 0 downstream tasks scheduled from follow-on schedule check

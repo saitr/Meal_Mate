@@ -1,14 +1,38 @@
-[2023-05-23T10:14:35.340+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-11-01T00:00:00+00:00 [queued]>
-[2023-05-23T10:14:35.429+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-11-01T00:00:00+00:00 [queued]>
-[2023-05-23T10:14:35.438+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 6
-[2023-05-23T10:14:36.606+0000] {taskinstance.py:1327} INFO - Executing <Task(_PythonDecoratedOperator): get_name> on 2021-11-01 00:00:00+00:00
-[2023-05-23T10:14:36.667+0000] {standard_task_runner.py:57} INFO - Started process 829 to run task
-[2023-05-23T10:14:36.731+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'dag_with_taskflow_api_v02', 'get_name', 'scheduled__2021-11-01T00:00:00+00:00', '--job-id', '13', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmpbqc8bqgk']
-[2023-05-23T10:14:36.772+0000] {standard_task_runner.py:85} INFO - Job 13: Subtask get_name
-[2023-05-23T10:15:12.927+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 13 for task get_name ((psycopg2.OperationalError) could not translate host name "postgres" to address: Temporary failure in name resolution
-
-(Background on this error at: https://sqlalche.me/e/14/e3q8); 829)
-[2023-05-23T10:15:10.575+0000] {job.py:216} ERROR - Job heartbeat got an exception
+[2023-05-24T15:15:13.260+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-11-01T00:00:00+00:00 [queued]>
+[2023-05-24T15:15:13.471+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-11-01T00:00:00+00:00 [queued]>
+[2023-05-24T15:15:13.471+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 6
+[2023-05-24T15:15:13.683+0000] {taskinstance.py:1327} INFO - Executing <Task(_PythonDecoratedOperator): get_name> on 2021-11-01 00:00:00+00:00
+[2023-05-24T15:15:13.718+0000] {standard_task_runner.py:57} INFO - Started process 222 to run task
+[2023-05-24T15:15:13.916+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'dag_with_taskflow_api_v02', 'get_name', 'scheduled__2021-11-01T00:00:00+00:00', '--job-id', '18', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmpap6mws8b']
+[2023-05-24T15:15:13.948+0000] {standard_task_runner.py:85} INFO - Job 18: Subtask get_name
+[2023-05-24T15:15:14.886+0000] {task_command.py:410} INFO - Running <TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-11-01T00:00:00+00:00 [running]> on host 942de29f183d
+[2023-05-24T15:15:15.606+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Sai' AIRFLOW_CTX_DAG_ID='dag_with_taskflow_api_v02' AIRFLOW_CTX_TASK_ID='get_name' AIRFLOW_CTX_EXECUTION_DATE='2021-11-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2021-11-01T00:00:00+00:00'
+[2023-05-24T15:15:15.611+0000] {python.py:183} INFO - Done. Returned value was: {'first_name': 'Sai', 'last_name': 'Tr'}
+[2023-05-24T15:15:15.855+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=dag_with_taskflow_api_v02, task_id=get_name, execution_date=20211101T000000, start_date=20230524T151513, end_date=20230524T151515
+[2023-05-24T15:15:15.967+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
+[2023-05-24T15:15:16.238+0000] {taskinstance.py:2651} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2023-05-25T06:49:01.995+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-11-01T00:00:00+00:00 [queued]>
+[2023-05-25T06:49:02.109+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-11-01T00:00:00+00:00 [queued]>
+[2023-05-25T06:49:02.115+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 6
+[2023-05-25T06:49:02.464+0000] {taskinstance.py:1327} INFO - Executing <Task(_PythonDecoratedOperator): get_name> on 2021-11-01 00:00:00+00:00
+[2023-05-25T06:49:02.521+0000] {standard_task_runner.py:57} INFO - Started process 1756 to run task
+[2023-05-25T06:49:02.528+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'dag_with_taskflow_api_v02', 'get_name', 'scheduled__2021-11-01T00:00:00+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmpxq0entt2']
+[2023-05-25T06:49:02.531+0000] {standard_task_runner.py:85} INFO - Job 11: Subtask get_name
+[2023-05-25T06:49:03.227+0000] {task_command.py:410} INFO - Running <TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-11-01T00:00:00+00:00 [running]> on host 6bd07c7477d9
+[2023-05-25T06:49:04.455+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Sai' AIRFLOW_CTX_DAG_ID='dag_with_taskflow_api_v02' AIRFLOW_CTX_TASK_ID='get_name' AIRFLOW_CTX_EXECUTION_DATE='2021-11-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2021-11-01T00:00:00+00:00'
+[2023-05-25T06:49:04.459+0000] {python.py:183} INFO - Done. Returned value was: {'first_name': 'Sai', 'last_name': 'Tr'}
+[2023-05-25T06:49:04.867+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=dag_with_taskflow_api_v02, task_id=get_name, execution_date=20211101T000000, start_date=20230525T064902, end_date=20230525T064904
+[2023-05-25T06:49:05.050+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
+[2023-05-25T06:49:05.220+0000] {taskinstance.py:2651} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-05-25T10:16:30.359+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-11-01T00:00:00+00:00 [queued]>
+[2023-05-25T10:16:31.064+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-11-01T00:00:00+00:00 [queued]>
+[2023-05-25T10:16:31.074+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 6
+[2023-05-25T10:16:32.234+0000] {taskinstance.py:1327} INFO - Executing <Task(_PythonDecoratedOperator): get_name> on 2021-11-01 00:00:00+00:00
+[2023-05-25T10:16:32.560+0000] {standard_task_runner.py:57} INFO - Started process 1274 to run task
+[2023-05-25T10:16:32.640+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'dag_with_taskflow_api_v02', 'get_name', 'scheduled__2021-11-01T00:00:00+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmpndo2zr34']
+[2023-05-25T10:16:32.738+0000] {standard_task_runner.py:85} INFO - Job 11: Subtask get_name
+[2023-05-25T10:17:57.788+0000] {task_command.py:410} INFO - Running <TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-11-01T00:00:00+00:00 [running]> on host b1ae37a9584e
+[2023-05-25T10:17:55.035+0000] {job.py:216} ERROR - Job heartbeat got an exception
 Traceback (most recent call last):
   File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 3366, in _wrap_pool_connect
     return fn()
@@ -105,18 +129,8 @@ Traceback (most recent call last):
 sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not translate host name "postgres" to address: Temporary failure in name resolution
 
 (Background on this error at: https://sqlalche.me/e/14/e3q8)
-[2023-05-23T10:15:53.452+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
-[2023-05-23T10:15:59.939+0000] {taskinstance.py:2651} INFO - 0 downstream tasks scheduled from follow-on schedule check
-[2023-05-23T10:26:25.094+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-11-01T00:00:00+00:00 [queued]>
-[2023-05-23T10:26:25.321+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-11-01T00:00:00+00:00 [queued]>
-[2023-05-23T10:26:25.326+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 6
-[2023-05-23T10:26:25.678+0000] {taskinstance.py:1327} INFO - Executing <Task(_PythonDecoratedOperator): get_name> on 2021-11-01 00:00:00+00:00
-[2023-05-23T10:26:25.809+0000] {standard_task_runner.py:57} INFO - Started process 218 to run task
-[2023-05-23T10:26:25.863+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'dag_with_taskflow_api_v02', 'get_name', 'scheduled__2021-11-01T00:00:00+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmpwdphhwyh']
-[2023-05-23T10:26:25.935+0000] {standard_task_runner.py:85} INFO - Job 9: Subtask get_name
-[2023-05-23T10:26:26.938+0000] {task_command.py:410} INFO - Running <TaskInstance: dag_with_taskflow_api_v02.get_name scheduled__2021-11-01T00:00:00+00:00 [running]> on host 8a6612510f4c
-[2023-05-23T10:26:28.218+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='coder2j' AIRFLOW_CTX_DAG_ID='dag_with_taskflow_api_v02' AIRFLOW_CTX_TASK_ID='get_name' AIRFLOW_CTX_EXECUTION_DATE='2021-11-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2021-11-01T00:00:00+00:00'
-[2023-05-23T10:26:28.226+0000] {python.py:183} INFO - Done. Returned value was: {'first_name': 'Jerry', 'last_name': 'Fridman'}
-[2023-05-23T10:26:28.675+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=dag_with_taskflow_api_v02, task_id=get_name, execution_date=20211101T000000, start_date=20230523T102625, end_date=20230523T102628
-[2023-05-23T10:26:28.954+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
-[2023-05-23T10:26:29.218+0000] {taskinstance.py:2651} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2023-05-25T10:18:25.119+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 11 for task get_name ((psycopg2.OperationalError) could not translate host name "postgres" to address: Temporary failure in name resolution
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8); 1274)
+[2023-05-25T10:18:26.828+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2023-05-25T10:18:27.161+0000] {taskinstance.py:2651} INFO - 0 downstream tasks scheduled from follow-on schedule check

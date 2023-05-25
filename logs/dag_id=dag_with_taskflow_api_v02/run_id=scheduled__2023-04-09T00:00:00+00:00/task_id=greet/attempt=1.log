@@ -1,14 +1,42 @@
-[2023-05-23T10:50:01.458+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.greet scheduled__2023-04-09T00:00:00+00:00 [queued]>
-[2023-05-23T10:50:01.494+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.greet scheduled__2023-04-09T00:00:00+00:00 [queued]>
-[2023-05-23T10:50:01.495+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 6
-[2023-05-23T10:50:01.534+0000] {taskinstance.py:1327} INFO - Executing <Task(_PythonDecoratedOperator): greet> on 2023-04-09 00:00:00+00:00
-[2023-05-23T10:50:01.541+0000] {standard_task_runner.py:57} INFO - Started process 3360 to run task
-[2023-05-23T10:50:01.552+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'dag_with_taskflow_api_v02', 'greet', 'scheduled__2023-04-09T00:00:00+00:00', '--job-id', '1609', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmpebdb6vwh']
-[2023-05-23T10:50:01.555+0000] {standard_task_runner.py:85} INFO - Job 1609: Subtask greet
-[2023-05-23T10:50:01.652+0000] {task_command.py:410} INFO - Running <TaskInstance: dag_with_taskflow_api_v02.greet scheduled__2023-04-09T00:00:00+00:00 [running]> on host 1f3d28e3ebde
-[2023-05-23T10:50:01.937+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Sai' AIRFLOW_CTX_DAG_ID='dag_with_taskflow_api_v02' AIRFLOW_CTX_TASK_ID='greet' AIRFLOW_CTX_EXECUTION_DATE='2023-04-09T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-04-09T00:00:00+00:00'
-[2023-05-23T10:50:01.942+0000] {logging_mixin.py:149} INFO - Hello World! My name is Sai Tr and I am 19 years old!
-[2023-05-23T10:50:01.943+0000] {python.py:183} INFO - Done. Returned value was: None
-[2023-05-23T10:50:01.968+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=dag_with_taskflow_api_v02, task_id=greet, execution_date=20230409T000000, start_date=20230523T105001, end_date=20230523T105001
-[2023-05-23T10:50:02.044+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
-[2023-05-23T10:50:02.158+0000] {taskinstance.py:2651} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-05-24T15:30:59.916+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.greet scheduled__2023-04-09T00:00:00+00:00 [queued]>
+[2023-05-24T15:30:59.962+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.greet scheduled__2023-04-09T00:00:00+00:00 [queued]>
+[2023-05-24T15:30:59.964+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 6
+[2023-05-24T15:31:00.034+0000] {taskinstance.py:1327} INFO - Executing <Task(_PythonDecoratedOperator): greet> on 2023-04-09 00:00:00+00:00
+[2023-05-24T15:31:00.041+0000] {standard_task_runner.py:57} INFO - Started process 3765 to run task
+[2023-05-24T15:31:00.053+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'dag_with_taskflow_api_v02', 'greet', 'scheduled__2023-04-09T00:00:00+00:00', '--job-id', '1607', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmp4kiaursi']
+[2023-05-24T15:31:00.056+0000] {standard_task_runner.py:85} INFO - Job 1607: Subtask greet
+[2023-05-24T15:31:00.208+0000] {task_command.py:410} INFO - Running <TaskInstance: dag_with_taskflow_api_v02.greet scheduled__2023-04-09T00:00:00+00:00 [running]> on host 942de29f183d
+[2023-05-24T15:31:00.550+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Sai' AIRFLOW_CTX_DAG_ID='dag_with_taskflow_api_v02' AIRFLOW_CTX_TASK_ID='greet' AIRFLOW_CTX_EXECUTION_DATE='2023-04-09T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-04-09T00:00:00+00:00'
+[2023-05-24T15:31:00.552+0000] {logging_mixin.py:149} INFO - Hello World! My name is Sai Tr and I am 19 years old!
+[2023-05-24T15:31:00.552+0000] {python.py:183} INFO - Done. Returned value was: None
+[2023-05-24T15:31:00.582+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=dag_with_taskflow_api_v02, task_id=greet, execution_date=20230409T000000, start_date=20230524T153059, end_date=20230524T153100
+[2023-05-24T15:31:00.641+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
+[2023-05-24T15:31:00.686+0000] {taskinstance.py:2651} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-05-25T07:03:30.426+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.greet scheduled__2023-04-09T00:00:00+00:00 [queued]>
+[2023-05-25T07:03:30.457+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.greet scheduled__2023-04-09T00:00:00+00:00 [queued]>
+[2023-05-25T07:03:30.458+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 6
+[2023-05-25T07:03:30.505+0000] {taskinstance.py:1327} INFO - Executing <Task(_PythonDecoratedOperator): greet> on 2023-04-09 00:00:00+00:00
+[2023-05-25T07:03:30.525+0000] {standard_task_runner.py:57} INFO - Started process 5279 to run task
+[2023-05-25T07:03:30.540+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'dag_with_taskflow_api_v02', 'greet', 'scheduled__2023-04-09T00:00:00+00:00', '--job-id', '1604', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmp4fxnpb0m']
+[2023-05-25T07:03:30.553+0000] {standard_task_runner.py:85} INFO - Job 1604: Subtask greet
+[2023-05-25T07:03:30.699+0000] {task_command.py:410} INFO - Running <TaskInstance: dag_with_taskflow_api_v02.greet scheduled__2023-04-09T00:00:00+00:00 [running]> on host 6bd07c7477d9
+[2023-05-25T07:03:30.961+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Sai' AIRFLOW_CTX_DAG_ID='dag_with_taskflow_api_v02' AIRFLOW_CTX_TASK_ID='greet' AIRFLOW_CTX_EXECUTION_DATE='2023-04-09T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-04-09T00:00:00+00:00'
+[2023-05-25T07:03:30.963+0000] {logging_mixin.py:149} INFO - Hello World! My name is Sai Tr and I am 19 years old!
+[2023-05-25T07:03:30.964+0000] {python.py:183} INFO - Done. Returned value was: None
+[2023-05-25T07:03:30.984+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=dag_with_taskflow_api_v02, task_id=greet, execution_date=20230409T000000, start_date=20230525T070330, end_date=20230525T070330
+[2023-05-25T07:03:31.032+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
+[2023-05-25T07:03:31.072+0000] {taskinstance.py:2651} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-05-25T10:38:09.039+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.greet scheduled__2023-04-09T00:00:00+00:00 [queued]>
+[2023-05-25T10:38:09.242+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.greet scheduled__2023-04-09T00:00:00+00:00 [queued]>
+[2023-05-25T10:38:09.243+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 6
+[2023-05-25T10:38:09.304+0000] {taskinstance.py:1327} INFO - Executing <Task(_PythonDecoratedOperator): greet> on 2023-04-09 00:00:00+00:00
+[2023-05-25T10:38:09.313+0000] {standard_task_runner.py:57} INFO - Started process 4945 to run task
+[2023-05-25T10:38:09.324+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'dag_with_taskflow_api_v02', 'greet', 'scheduled__2023-04-09T00:00:00+00:00', '--job-id', '1622', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmpyzt674tn']
+[2023-05-25T10:38:09.328+0000] {standard_task_runner.py:85} INFO - Job 1622: Subtask greet
+[2023-05-25T10:38:09.543+0000] {task_command.py:410} INFO - Running <TaskInstance: dag_with_taskflow_api_v02.greet scheduled__2023-04-09T00:00:00+00:00 [running]> on host b1ae37a9584e
+[2023-05-25T10:38:09.973+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Sai' AIRFLOW_CTX_DAG_ID='dag_with_taskflow_api_v02' AIRFLOW_CTX_TASK_ID='greet' AIRFLOW_CTX_EXECUTION_DATE='2023-04-09T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-04-09T00:00:00+00:00'
+[2023-05-25T10:38:09.975+0000] {logging_mixin.py:149} INFO - Hello World! My name is Sai Tr and I am 19 years old!
+[2023-05-25T10:38:09.975+0000] {python.py:183} INFO - Done. Returned value was: None
+[2023-05-25T10:38:10.008+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=dag_with_taskflow_api_v02, task_id=greet, execution_date=20230409T000000, start_date=20230525T103809, end_date=20230525T103810
+[2023-05-25T10:38:10.278+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
+[2023-05-25T10:38:10.372+0000] {taskinstance.py:2651} INFO - 0 downstream tasks scheduled from follow-on schedule check

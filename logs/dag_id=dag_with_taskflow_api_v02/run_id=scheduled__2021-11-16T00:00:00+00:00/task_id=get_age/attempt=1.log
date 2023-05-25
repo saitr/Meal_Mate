@@ -1,26 +1,39 @@
-[2023-05-23T10:19:56.722+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_age scheduled__2021-11-16T00:00:00+00:00 [queued]>
-[2023-05-23T10:19:56.780+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_age scheduled__2021-11-16T00:00:00+00:00 [queued]>
-[2023-05-23T10:19:56.781+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 6
-[2023-05-23T10:19:57.052+0000] {taskinstance.py:1327} INFO - Executing <Task(_PythonDecoratedOperator): get_age> on 2021-11-16 00:00:00+00:00
-[2023-05-23T10:19:57.101+0000] {standard_task_runner.py:57} INFO - Started process 1070 to run task
-[2023-05-23T10:19:57.156+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'dag_with_taskflow_api_v02', 'get_age', 'scheduled__2021-11-16T00:00:00+00:00', '--job-id', '108', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmphexw_6qc']
-[2023-05-23T10:19:57.208+0000] {standard_task_runner.py:85} INFO - Job 108: Subtask get_age
-[2023-05-23T10:19:57.643+0000] {task_command.py:410} INFO - Running <TaskInstance: dag_with_taskflow_api_v02.get_age scheduled__2021-11-16T00:00:00+00:00 [running]> on host fb58d5a02d2c
-[2023-05-23T10:19:58.656+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='coder2j' AIRFLOW_CTX_DAG_ID='dag_with_taskflow_api_v02' AIRFLOW_CTX_TASK_ID='get_age' AIRFLOW_CTX_EXECUTION_DATE='2021-11-16T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2021-11-16T00:00:00+00:00'
-[2023-05-23T10:19:58.659+0000] {python.py:183} INFO - Done. Returned value was: 19
-[2023-05-23T10:19:58.805+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=dag_with_taskflow_api_v02, task_id=get_age, execution_date=20211116T000000, start_date=20230523T101956, end_date=20230523T101958
-[2023-05-23T10:19:58.933+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
-[2023-05-23T10:19:59.074+0000] {taskinstance.py:2651} INFO - 1 downstream tasks scheduled from follow-on schedule check
-[2023-05-23T10:27:03.746+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_age scheduled__2021-11-16T00:00:00+00:00 [queued]>
-[2023-05-23T10:27:04.224+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_age scheduled__2021-11-16T00:00:00+00:00 [queued]>
-[2023-05-23T10:27:04.225+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 6
-[2023-05-23T10:27:04.878+0000] {taskinstance.py:1327} INFO - Executing <Task(_PythonDecoratedOperator): get_age> on 2021-11-16 00:00:00+00:00
-[2023-05-23T10:27:05.007+0000] {standard_task_runner.py:57} INFO - Started process 335 to run task
-[2023-05-23T10:27:05.038+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'dag_with_taskflow_api_v02', 'get_age', 'scheduled__2021-11-16T00:00:00+00:00', '--job-id', '64', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmpajf6zx9k']
-[2023-05-23T10:27:05.187+0000] {standard_task_runner.py:85} INFO - Job 64: Subtask get_age
-[2023-05-23T10:27:06.348+0000] {task_command.py:410} INFO - Running <TaskInstance: dag_with_taskflow_api_v02.get_age scheduled__2021-11-16T00:00:00+00:00 [running]> on host 8a6612510f4c
-[2023-05-23T10:27:08.651+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='coder2j' AIRFLOW_CTX_DAG_ID='dag_with_taskflow_api_v02' AIRFLOW_CTX_TASK_ID='get_age' AIRFLOW_CTX_EXECUTION_DATE='2021-11-16T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2021-11-16T00:00:00+00:00'
-[2023-05-23T10:27:08.654+0000] {python.py:183} INFO - Done. Returned value was: 19
-[2023-05-23T10:27:09.129+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=dag_with_taskflow_api_v02, task_id=get_age, execution_date=20211116T000000, start_date=20230523T102703, end_date=20230523T102709
-[2023-05-23T10:27:09.469+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
-[2023-05-23T10:27:09.778+0000] {taskinstance.py:2651} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-05-24T15:15:49.147+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_age scheduled__2021-11-16T00:00:00+00:00 [queued]>
+[2023-05-24T15:15:49.170+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_age scheduled__2021-11-16T00:00:00+00:00 [queued]>
+[2023-05-24T15:15:49.173+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 6
+[2023-05-24T15:15:49.300+0000] {taskinstance.py:1327} INFO - Executing <Task(_PythonDecoratedOperator): get_age> on 2021-11-16 00:00:00+00:00
+[2023-05-24T15:15:49.375+0000] {standard_task_runner.py:57} INFO - Started process 325 to run task
+[2023-05-24T15:15:49.408+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'dag_with_taskflow_api_v02', 'get_age', 'scheduled__2021-11-16T00:00:00+00:00', '--job-id', '60', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmpdq5iqt83']
+[2023-05-24T15:15:49.483+0000] {standard_task_runner.py:85} INFO - Job 60: Subtask get_age
+[2023-05-24T15:15:50.052+0000] {task_command.py:410} INFO - Running <TaskInstance: dag_with_taskflow_api_v02.get_age scheduled__2021-11-16T00:00:00+00:00 [running]> on host 942de29f183d
+[2023-05-24T15:15:50.925+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Sai' AIRFLOW_CTX_DAG_ID='dag_with_taskflow_api_v02' AIRFLOW_CTX_TASK_ID='get_age' AIRFLOW_CTX_EXECUTION_DATE='2021-11-16T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2021-11-16T00:00:00+00:00'
+[2023-05-24T15:15:50.926+0000] {python.py:183} INFO - Done. Returned value was: 19
+[2023-05-24T15:15:51.124+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=dag_with_taskflow_api_v02, task_id=get_age, execution_date=20211116T000000, start_date=20230524T151549, end_date=20230524T151551
+[2023-05-24T15:15:51.279+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
+[2023-05-24T15:15:51.657+0000] {taskinstance.py:2651} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-05-25T06:49:33.804+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_age scheduled__2021-11-16T00:00:00+00:00 [queued]>
+[2023-05-25T06:49:33.889+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_age scheduled__2021-11-16T00:00:00+00:00 [queued]>
+[2023-05-25T06:49:33.889+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 6
+[2023-05-25T06:49:34.044+0000] {taskinstance.py:1327} INFO - Executing <Task(_PythonDecoratedOperator): get_age> on 2021-11-16 00:00:00+00:00
+[2023-05-25T06:49:34.066+0000] {standard_task_runner.py:57} INFO - Started process 1879 to run task
+[2023-05-25T06:49:34.185+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'dag_with_taskflow_api_v02', 'get_age', 'scheduled__2021-11-16T00:00:00+00:00', '--job-id', '64', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmph7m7of4d']
+[2023-05-25T06:49:34.188+0000] {standard_task_runner.py:85} INFO - Job 64: Subtask get_age
+[2023-05-25T06:49:34.611+0000] {task_command.py:410} INFO - Running <TaskInstance: dag_with_taskflow_api_v02.get_age scheduled__2021-11-16T00:00:00+00:00 [running]> on host 6bd07c7477d9
+[2023-05-25T06:49:36.085+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Sai' AIRFLOW_CTX_DAG_ID='dag_with_taskflow_api_v02' AIRFLOW_CTX_TASK_ID='get_age' AIRFLOW_CTX_EXECUTION_DATE='2021-11-16T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2021-11-16T00:00:00+00:00'
+[2023-05-25T06:49:36.098+0000] {python.py:183} INFO - Done. Returned value was: 19
+[2023-05-25T06:49:36.326+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=dag_with_taskflow_api_v02, task_id=get_age, execution_date=20211116T000000, start_date=20230525T064933, end_date=20230525T064936
+[2023-05-25T06:49:36.438+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
+[2023-05-25T06:49:37.051+0000] {taskinstance.py:2651} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-05-25T10:19:19.297+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_age scheduled__2021-11-16T00:00:00+00:00 [queued]>
+[2023-05-25T10:19:19.382+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_with_taskflow_api_v02.get_age scheduled__2021-11-16T00:00:00+00:00 [queued]>
+[2023-05-25T10:19:19.386+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 6
+[2023-05-25T10:19:19.558+0000] {taskinstance.py:1327} INFO - Executing <Task(_PythonDecoratedOperator): get_age> on 2021-11-16 00:00:00+00:00
+[2023-05-25T10:19:19.623+0000] {standard_task_runner.py:57} INFO - Started process 1383 to run task
+[2023-05-25T10:19:19.683+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'dag_with_taskflow_api_v02', 'get_age', 'scheduled__2021-11-16T00:00:00+00:00', '--job-id', '58', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmp5guq1n2a']
+[2023-05-25T10:19:19.706+0000] {standard_task_runner.py:85} INFO - Job 58: Subtask get_age
+[2023-05-25T10:19:20.011+0000] {task_command.py:410} INFO - Running <TaskInstance: dag_with_taskflow_api_v02.get_age scheduled__2021-11-16T00:00:00+00:00 [running]> on host b1ae37a9584e
+[2023-05-25T10:19:21.545+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Sai' AIRFLOW_CTX_DAG_ID='dag_with_taskflow_api_v02' AIRFLOW_CTX_TASK_ID='get_age' AIRFLOW_CTX_EXECUTION_DATE='2021-11-16T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2021-11-16T00:00:00+00:00'
+[2023-05-25T10:19:21.558+0000] {python.py:183} INFO - Done. Returned value was: 19
+[2023-05-25T10:19:21.828+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=dag_with_taskflow_api_v02, task_id=get_age, execution_date=20211116T000000, start_date=20230525T101919, end_date=20230525T101921
+[2023-05-25T10:19:22.029+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
+[2023-05-25T10:19:22.164+0000] {taskinstance.py:2651} INFO - 1 downstream tasks scheduled from follow-on schedule check
