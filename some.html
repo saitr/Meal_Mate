@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Google Maps Directions Example</title>
+</head>
+<body>
+  <button id="showDirectionsButton">Show Directions</button>
+  <script>
+    document.getElementById('showDirectionsButton').addEventListener('click', function () {
+      // Replace latitude and longitude with your desired location
+      const latitude = 'LATITUDE';
+      const longitude = 'LONGITUDE';
+  
+      // Create a Google Maps URL with the destination coordinates
+      const mapsURL = `https://www.google.com/maps/dir//${15.334969279418031},${76.45990140473914}/`;   
+  
+      // Open a new tab or window with the Google Maps URL
+      window.open(mapsURL, '_blank');
+    });
+  </script>
+  
+</body>
+</html>
